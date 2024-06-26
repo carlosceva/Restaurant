@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Empresa;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class EmpresaController extends Controller
 {
@@ -12,7 +13,10 @@ class EmpresaController extends Controller
      */
     public function index()
     {
-        //
+
+        $datos = Empresa::find(1);
+
+        return view('Configuracion.index', compact('datos'));
     }
 
     /**
@@ -61,5 +65,10 @@ class EmpresaController extends Controller
     public function destroy(Empresa $empresa)
     {
         //
+    }
+
+    public function intruso()
+    {
+        return view('intruso');
     }
 }

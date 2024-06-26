@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Menu;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MenuController extends Controller
 {
@@ -12,7 +13,11 @@ class MenuController extends Controller
      */
     public function index()
     {
-        //
+        $menus = DB::table('menus')
+                ->where('estado','a')
+                ->get();
+
+        return view('Menu.index', compact('menus'));
     }
 
     /**

@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Categoria;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
 
 class CategoriaController extends Controller
 {
@@ -12,7 +15,11 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        //
+        $categorias = DB::table('categorias')
+                    ->where('estado','a')
+                    ->get();
+
+        return view('Categoria.index',compact('categorias'));
     }
 
     /**

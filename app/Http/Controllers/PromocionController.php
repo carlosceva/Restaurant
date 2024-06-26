@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Promocion;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PromocionController extends Controller
 {
@@ -12,7 +13,11 @@ class PromocionController extends Controller
      */
     public function index()
     {
-        //
+        $promociones = DB::table('promocions')
+                ->where('estado','a')
+                ->get();
+
+        return view('Promocion.index',compact('promociones'));
     }
 
     /**

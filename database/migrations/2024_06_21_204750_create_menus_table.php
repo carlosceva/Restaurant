@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('menus', function (Blueprint $table) {
             $table->id();
+            $table->string('descripcion');
+            $table->string('estado')->default('a');
             $table->timestamps();
         });
     }

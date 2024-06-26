@@ -12,7 +12,7 @@ class PrivilegioController extends Controller
      */
     public function index()
     {
-        //
+        return view('Privilegio.index');
     }
 
     /**
