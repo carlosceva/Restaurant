@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Producto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductoController extends Controller
 {
@@ -12,7 +13,14 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        return view('Producto.index');
+        $productos = DB::table('productos as p')
+                    ->join('categorias as c', 'c.id','p.id_categoria')
+                    ->where('p.estado','a')
+                    ->select('p.id as idp','p.nombre as producto','p.descripcion','c.nombre as categoria','p.precio as precio','p.estado as estado')
+                    ->orderBy('p.id','asc')
+                    ->get();
+
+        return view('Producto.index', compact('productos'));
     }
 
     /**

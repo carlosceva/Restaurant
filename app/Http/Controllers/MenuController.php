@@ -13,10 +13,11 @@ class MenuController extends Controller
      */
     public function index()
     {
-        $menus = DB::table('menus')
-                ->where('estado','a')
-                ->get();
+        //$menus = DB::table('menus')
+        //        ->where('estado','a')
+        //        ->get();
 
+        $menus = Menu::with(['detalleMenus.producto'])->get();
         return view('Menu.index', compact('menus'));
     }
 

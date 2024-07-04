@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Privilegio;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PrivilegioController extends Controller
 {
@@ -12,7 +13,16 @@ class PrivilegioController extends Controller
      */
     public function index()
     {
-        return view('Privilegio.index');
+        //$privilegios = Privilegio::all();
+
+        $privilegios = DB::table('privilegios as p')
+                    ->join('roles as r','p.id_rol','r.id')
+                    ->where('p.estado','a')
+                    ->select('p.id as id','p.funcionalidad as funcion','r.nombre as rol','p.agregar as agregar','p.borrar as borrar','p.modificar as modificar','p.leer as leer','p.estado as estado')
+                    ->orderBy('p.id','asc')
+                    ->get();
+
+        return view('Privilegio.index', compact('privilegios'));
     }
 
     /**
