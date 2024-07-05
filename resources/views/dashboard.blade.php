@@ -189,6 +189,12 @@
                 </a>
               </li>
               <li class="nav-item">
+                <a href="{{route('pago.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Gestionar Pago</p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="{{route('promocion.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Gestionar Promocion</p>

@@ -15,44 +15,49 @@
                 </div>
 </div>
     
-
-    
-        
-    
-<div class="card table-responsive">
-    <div class="card-body">
-        <table class="table table-hover" id="horarios">
-            <thead class="table-light">
-            <tr>
-                <th>ID</th>
-                <th>Hora Inicio</th>
-                <th>Hora Fin</th>
-                <th>Turno</th>
-                <th>Estado</th>
-                <th>Accion</th>
-            </tr>
-            </thead>
-            <tbody class="table-group-divider">
-            
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>
-                    <a href="#" data-toggle="modal" data-target="#"><i class="fa fa-edit" aria-hidden="true"></i></a>
-                    &nbsp;
-                    <a href="#" data-toggle="modal" data-target=""> <i class="fa fa-trash" aria-hidden="true"></i></a>
-                </td>
-            </tr>
-            
- 
-
-            
-            </tbody>
-        </table>
-    </div>
-</div>
+<table class="table table-hover" id="usuarios">
+    <thead class="table-light">
+    <tr>
+        <th>ID</th>
+        <th>FECHA</th>
+        <th>CLIENTE</th>
+        <th>DESCUENTO %</th>
+        <th>SERVICIO</th>
+        <th>TOTAL</th>
+        <th>ESTADO</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody class="table-group-divider">
+    @foreach($ventas as $venta)
+    <?php $collapseId = "menu-{$venta->id}-details"; ?>
+    <tr data-bs-toggle="collapse" data-bs-target="#{{ $collapseId }}" aria-expanded="false" aria-controls="{{ $collapseId }}">
+        <td>{{ $venta->id }}</td>
+        <td>{{ $venta->fecha }}</td>
+        <td>{{ $venta->cliente->nombre }}</td>
+        <td>{{ $venta->promocion->descuento }}</td>
+        <td>{{ $venta->servicio->descripcion }}</td>
+        <td>{{ $venta->total }}</td>
+        <td>{{ $venta->estado == 'a' ? 'Activo' : 'Inactivo' }} </td>
+        <td class="text-end"><i class="fa fa-chevron-down"></i></td>
+    </tr>
+    <tr class="accordion-collapse collapse" id="{{ $collapseId }}">
+        <td colspan="8">
+            <div class="accordion-body">
+            <ul>
+                @foreach($venta->detalleVentas as $detalle)
+                    @if($detalle->producto)
+                    <li>
+                        {{ $detalle->producto->nombre }} - {{ $detalle->producto->descripcion }} - ${{ $detalle->producto->precio }}
+                    </li>
+                    @endif
+                @endforeach
+                </ul>
+            </div>
+        </td>
+    </tr>
+    @endforeach
+    </tbody>
+</table>
              
 @endsection

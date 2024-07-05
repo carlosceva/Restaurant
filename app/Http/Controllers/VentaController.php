@@ -12,7 +12,8 @@ class VentaController extends Controller
      */
     public function index()
     {
-        return view('Venta.index');
+        $ventas = Venta::with(['cliente', 'empleado', 'promocion', 'servicio', 'detalleVentas.producto'])->get();
+        return view('Venta.index', compact('ventas'));
     }
 
     /**

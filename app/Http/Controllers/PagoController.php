@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pago;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PagoController extends Controller
 {
@@ -12,7 +13,14 @@ class PagoController extends Controller
      */
     public function index()
     {
-        return view('Menu.index');
+        $pagos = DB::table('pagos as p')
+        ->join('clientes as c', 'c.id','p.id_cliente')
+        ->where('p.estado','a')
+        ->select('p.id as id', 'p.metodo_pago as metodopago', 'c.nombre as cliente','p.estado as estado', 'p.id_venta as venta')
+        ->orderBy('p.id','asc')
+        ->get();
+
+        return view('Pago.index', compact('pagos'));
     }
 
     /**

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Empleado;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class EmpleadoController extends Controller
 {
@@ -12,7 +13,14 @@ class EmpleadoController extends Controller
      */
     public function index()
     {
-        return view('Empleado.index');
+        $empleados = DB::table('empleados as e')
+        ->join('users as u', 'u.id','e.id_user')
+        ->where('e.estado','a')
+        ->select('e.nombre as nombre', 'e.id as id', 'e.ci as ci','e.telefono as telefono', 'u.email as usuario','e.estado as estado','e.turno as turno')
+        ->orderBy('e.id','asc')
+        ->get();
+
+        return view('Empleado.index', compact('empleados'));
     }
 
     /**

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cliente;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ClienteController extends Controller
 {
@@ -12,7 +13,14 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        return view('Cliente.index');
+        $clientes = DB::table('clientes as c')
+        ->join('users as u', 'u.id','c.id_user')
+        ->where('c.estado','a')
+        ->select('c.nombre as nombre', 'c.id as id', 'c.direccion as direccion','c.telefono as telefono', 'u.email as usuario','c.estado as estado')
+        ->orderBy('c.id','asc')
+        ->get();
+
+        return view('Cliente.index', compact('clientes'));
     }
 
     /**

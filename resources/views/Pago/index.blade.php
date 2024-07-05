@@ -1,27 +1,27 @@
 @extends('dashboard')
 
-@section('title', 'Usuario')
+@section('title', 'G. Pago')
 
 @section('content')
 <div class="card-header">
-                <h3 class="card-title">
-                <i class="fas fa-user mr-1"></i>
-                GESTIONAR USUARIO    
-                </h3>
+                <h1 class="card-title">
+                <i class="fas fa-clock mr-1"></i>
+                <b>GESTIONAR PAGO</b> 
+                </h1>
                 <div class="float-right d-sm-block"> 
                     <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                        <a href="#" data-toggle="modal" data-target="#addUserModal" class="btn btn-success"><i class="fa fa-plus"></i>&nbsp; Agregar</a>
+                        <a href="#" data-toggle="modal" data-target="#agregarHorarioModal" class="btn btn-success"><i class="fa fa-plus"></i>&nbsp; Agregar</a>
                     </div> 
                 </div>
-</div><!-- /.card-header -->
-
+</div>
+    
 @if (session('success'))
     <div class="alert alert-success">
         {{ session('success') }}
     </div>
-    @endif
+@endif
 
-    @if ($errors->any())
+@if ($errors->any())
     <div class="alert alert-danger">
         <ul>
             @foreach ($errors->all() as $error)
@@ -29,27 +29,27 @@
             @endforeach
         </ul>
     </div>
-    @endif
+@endif
 
     <table class="table table-hover" id="usuarios">
         <thead class="table-light">
             <tr>
                 <th>ID</th>
-                <th>Email</th>
-                <th>Rol</th>
-                <th>Empresa</th>
-                <th>Estado</th>
-                <th>Acciones</th>
+                <th>CLIENTE</th>
+                <th># VENTA</th>
+                <th>METODO PAGO</th>
+                <th>ESTADO</th>
+                <th>ACCIONES</th>
             </tr>
         </thead>
         <tbody class="table-group-divider">
-            @foreach($usuarios as $usuario)
+            @foreach($pagos as $pago)
             <tr>
-                <td>{{ $usuario->user }}</td>
-                <td>{{ $usuario->correo }}</td>
-                <td>{{ $usuario->rol }}</td>
-                <td>{{ $usuario->empresa }}</td>
-                <td>{{ $usuario->estado == 'a' ? 'Activo' : 'Inactivo' }} </td>
+                <td>{{ $pago->id }}</td>
+                <td>{{ $pago->cliente }}</td>
+                <td>{{ $pago->venta }}</td>
+                <td>{{ $pago->metodopago }}</td>
+                <td>{{ $pago->estado == 'a' ? 'Activo' : 'Inactivo' }} </td>
                 <td>
                     <a href="#" data-toggle="modal" data-target=""><i class="fa fa-edit" aria-hidden="true"></i></a>
                     &nbsp;
@@ -60,5 +60,5 @@
             @endforeach
         </tbody>
     </table>
-
+             
 @endsection

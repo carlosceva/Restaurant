@@ -15,44 +15,54 @@
                 </div>
 </div>
     
+@if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
 
-    
-        
-    
-<div class="card table-responsive">
-    <div class="card-body">
-        <table class="table table-hover" id="horarios">
-            <thead class="table-light">
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+    <table class="table table-hover" id="usuarios">
+        <thead class="table-light">
             <tr>
                 <th>ID</th>
-                <th>Hora Inicio</th>
-                <th>Hora Fin</th>
-                <th>Turno</th>
-                <th>Estado</th>
-                <th>Accion</th>
+                <th>CI</th>
+                <th>NOMBRE</th>
+                <th>USUARIO</th>
+                <th>TELEFONO</th>
+                <th>TURNO</th>
+                <th>ESTADO</th>
+                <th>ACCIONES</th>
             </tr>
-            </thead>
-            <tbody class="table-group-divider">
-            
+        </thead>
+        <tbody class="table-group-divider">
+            @foreach($empleados as $empleado)
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>{{ $empleado->id }}</td>
+                <td>{{ $empleado->ci }}</td>
+                <td>{{ $empleado->nombre }}</td>
+                <td>{{ $empleado->usuario }}</td>
+                <td>{{ $empleado->telefono }}</td>
+                <td>{{ $empleado->turno }}</td>
+                <td>{{ $empleado->estado }}</td>
                 <td>
-                    <a href="#" data-toggle="modal" data-target="#"><i class="fa fa-edit" aria-hidden="true"></i></a>
+                    <a href="#" data-toggle="modal" data-target=""><i class="fa fa-edit" aria-hidden="true"></i></a>
                     &nbsp;
                     <a href="#" data-toggle="modal" data-target=""> <i class="fa fa-trash" aria-hidden="true"></i></a>
                 </td>
             </tr>
-            
- 
 
-            
-            </tbody>
-        </table>
-    </div>
-</div>
+            @endforeach
+        </tbody>
+    </table>
              
 @endsection
