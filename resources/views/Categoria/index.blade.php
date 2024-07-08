@@ -10,7 +10,7 @@
                 </h1>
                 <div class="float-right d-sm-block"> 
                     <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                        <a href="#" data-toggle="modal" data-target="#agregarHorarioModal" class="btn btn-success"><i class="fa fa-plus"></i>&nbsp; Agregar</a>
+                        <a href="#" data-toggle="modal" data-target="#agregarModal" class="btn btn-success"><i class="fa fa-plus"></i>&nbsp; Agregar</a>
                     </div> 
                 </div>
 </div>
@@ -31,37 +31,41 @@
             </ul>
         </div>
 @endif
-
-        <table class="table table-hover" id="usuarios">
-            <thead class="table-light">
-                <tr>
-                    <th>ID</th>
-                    <th>NOMBRE</th>
-                    <th>ESTADO</th>
-                    <th>ACCIONES</th>
-                </tr>
-            </thead>
-            <tbody class="table-group-divider">
-                @foreach($categorias as $categoria)
-                <tr>
-                    <td>{{ $categoria->id }}</td>
-                    <td>{{ $categoria->nombre }}</td>
-                    <td>
-                        <?php if ($categoria->estado === 'a'): ?>
-                            Activo
-                        <?php elseif ($categoria->estado === 'i'): ?>
-                            Inactivo
-                        <?php endif; ?>
-                    </td>
-                    <td>
-                        <a href="#" data-toggle="modal" data-target=""><i class="fa fa-edit" aria-hidden="true"></i></a>
-                        &nbsp;
-                        <a href="#" data-toggle="modal" data-target=""> <i class="fa fa-trash" aria-hidden="true"></i></a>
-                    </td>
-                </tr>
-
-                @endforeach
-            </tbody>
-        </table>
-             
+    <div class="card table-responsive">
+        <div class="card-body">
+            <table class="table table-hover" id="categorias">
+                <thead class="table-light">
+                    <tr>
+                        <th>ID</th>
+                        <th>NOMBRE</th>
+                        <th>ESTADO</th>
+                        <th>ACCIONES</th>
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                    @foreach($categorias as $categoria)
+                    <tr>
+                        <td>{{ $categoria->id }}</td>
+                        <td>{{ $categoria->nombre }}</td>
+                        <td>
+                            <?php if ($categoria->estado === 'a'): ?>
+                                Activo
+                            <?php elseif ($categoria->estado === 'i'): ?>
+                                Inactivo
+                            <?php endif; ?>
+                        </td>
+                        <td>
+                            <a href="#" data-toggle="modal" data-target="#editModal{{ $categoria->id }}"><i class="fa fa-edit" aria-hidden="true"></i></a>
+                            &nbsp;
+                            <a href="#" data-toggle="modal" data-target="#deleteModal{{ $categoria->id }}"> <i class="fa fa-trash" aria-hidden="true"></i></a>
+                        </td>
+                    </tr>
+                    @include('Categoria.modificar', ['categoria' => $categoria])
+                    @include('Categoria.eliminar', ['categoria' => $categoria])                
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
+        @include('Categoria.agregar')             
 @endsection

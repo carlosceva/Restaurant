@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Contador;
 
 class UsuarioController extends Controller
 {
@@ -13,6 +16,9 @@ class UsuarioController extends Controller
      */
     public function index()
     {
+        $contar = new Contador();
+        $num = $contar->contarModel(11);
+
         $usuarios = DB::table('users as u')
         ->join('roles as r', 'r.id','u.id_rol')
         ->join('empresas as e','e.id','u.id_empresa')
@@ -20,7 +26,7 @@ class UsuarioController extends Controller
         ->orderBy('u.id','asc')
         ->get();
 
-        return view('Usuario.index', compact('usuarios'));
+        return view('Usuario.index', compact('usuarios','num'));
     }
 
     /**
@@ -36,7 +42,32 @@ class UsuarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        /*$request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|string|min:6',
+            'telefono' => 'required|integer',
+            'rol'=>'required',
+        ]);*/
+        
+        try {
+            
+            $usuario = Usuario::create([
+                'email' => $request->input('email'),
+                'password' => bcrypt($request->input('password')),
+                'id_rol' => $request->input('rol'),
+                'id_empresa' => 1,
+                'estado' => 'a',
+            ]);
+
+            $usuario->save();
+
+            Session::flash('success', 'Usuario agregado exitosamente.');
+        } catch (\Exception $e) {
+            Session::flash('error', 'Ocurrió un error al guardar usuario.');
+        }
+    
+        return redirect()->route('usuario.index');
     }
 
     /**
@@ -58,16 +89,27 @@ class UsuarioController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Usuario $usuario)
+    public function update(Request $request, $id)
     {
-        //
+        /*$request->validate([
+            'name' => 'required|string|max:255',
+            'telefono' => 'required|integer',
+        ]);*/
+
+        $oferta = Usuario::findOrFail($id);
+        $oferta->update($request->all());
+
+        return redirect()->route('usuario.index')->with('success', 'Usuario actualizado exitosamente.');   
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Usuario $usuario)
+    public function destroy($id)
     {
-        //
+        $oferta = Usuario::findOrFail($id);
+        $oferta->update(['estado' => 'i']);
+
+        return redirect()->route('usuario.index')->with('success', 'Usuario eliminado exitosamente.');
     }
 }

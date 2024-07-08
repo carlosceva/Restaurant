@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Venta;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Contador;
 
 class VentaController extends Controller
 {
@@ -12,8 +15,11 @@ class VentaController extends Controller
      */
     public function index()
     {
+        $contar = new Contador();
+        $num = $contar->contarModel(12);
+
         $ventas = Venta::with(['cliente', 'empleado', 'promocion', 'servicio', 'detalleVentas.producto'])->get();
-        return view('Venta.index', compact('ventas'));
+        return view('Venta.index', compact('ventas','num'));
     }
 
     /**

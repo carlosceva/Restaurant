@@ -30,8 +30,9 @@
             </ul>
         </div>
 @endif
-
-        <table class="table table-hover" id="usuarios">
+<div class="card table-responsive">
+    <div class="card-body">
+        <table class="table table-hover" id="productos">
             <thead class="table-light">
                 <tr>
                     <th>ID</th>
@@ -68,5 +69,6 @@
                 @endforeach
             </tbody>
         </table>
-             
+    </div>
+</div>
 @endsection

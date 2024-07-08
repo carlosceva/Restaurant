@@ -30,35 +30,37 @@
         </ul>
     </div>
 @endif
+<div class="card table-responsive">
+    <div class="card-body">
+        <table class="table table-hover" id="pagos">
+            <thead class="table-light">
+                <tr>
+                    <th>ID</th>
+                    <th>CLIENTE</th>
+                    <th># VENTA</th>
+                    <th>METODO PAGO</th>
+                    <th>ESTADO</th>
+                    <th>ACCIONES</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+                @foreach($pagos as $pago)
+                <tr>
+                    <td>{{ $pago->id }}</td>
+                    <td>{{ $pago->cliente }}</td>
+                    <td>{{ $pago->venta }}</td>
+                    <td>{{ $pago->metodopago }}</td>
+                    <td>{{ $pago->estado == 'a' ? 'Activo' : 'Inactivo' }} </td>
+                    <td>
+                        <a href="#" data-toggle="modal" data-target=""><i class="fa fa-edit" aria-hidden="true"></i></a>
+                        &nbsp;
+                        <a href="#" data-toggle="modal" data-target=""> <i class="fa fa-trash" aria-hidden="true"></i></a>
+                    </td>
+                </tr>
 
-    <table class="table table-hover" id="usuarios">
-        <thead class="table-light">
-            <tr>
-                <th>ID</th>
-                <th>CLIENTE</th>
-                <th># VENTA</th>
-                <th>METODO PAGO</th>
-                <th>ESTADO</th>
-                <th>ACCIONES</th>
-            </tr>
-        </thead>
-        <tbody class="table-group-divider">
-            @foreach($pagos as $pago)
-            <tr>
-                <td>{{ $pago->id }}</td>
-                <td>{{ $pago->cliente }}</td>
-                <td>{{ $pago->venta }}</td>
-                <td>{{ $pago->metodopago }}</td>
-                <td>{{ $pago->estado == 'a' ? 'Activo' : 'Inactivo' }} </td>
-                <td>
-                    <a href="#" data-toggle="modal" data-target=""><i class="fa fa-edit" aria-hidden="true"></i></a>
-                    &nbsp;
-                    <a href="#" data-toggle="modal" data-target=""> <i class="fa fa-trash" aria-hidden="true"></i></a>
-                </td>
-            </tr>
-
-            @endforeach
-        </tbody>
-    </table>
-             
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+</div>
 @endsection

@@ -9,8 +9,10 @@ class Menu extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['descripcion', 'estado'];
+
     public function detalleMenus()
     {
-        return $this->hasMany(DetalleMenu::class, 'id_menu', 'id');
+        return $this->hasMany(DetalleMenu::class, 'id_menu');
     }
 }

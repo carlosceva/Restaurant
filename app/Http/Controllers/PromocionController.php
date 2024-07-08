@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Promocion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Contador;
 
 class PromocionController extends Controller
 {
@@ -13,11 +16,14 @@ class PromocionController extends Controller
      */
     public function index()
     {
+        $contar = new Contador();
+        $num = $contar->contarModel(8);
+
         $promociones = DB::table('promocions')
                 ->where('estado','a')
                 ->get();
 
-        return view('Promocion.index',compact('promociones'));
+        return view('Promocion.index',compact('promociones','num'));
     }
 
     /**
@@ -33,7 +39,27 @@ class PromocionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        /*$request->validate([
+            'nombre' => 'required|string|max:255'
+        ]);*/
+        
+        try {
+            
+            $promocion = Promocion::create([
+                'descuento' => $request->input('descuento'),
+                'fecha_i' => $request->input('fecha_i'),
+                'fecha_f' => $request->input('fecha_f'),
+                'estado' => 'a',
+            ]);
+
+            $promocion->save();
+
+            Session::flash('success', 'Promocion agregado exitosamente.');
+        } catch (\Exception $e) {
+            Session::flash('error', 'Ocurrió un error al guardar Promocion.');
+        }
+    
+        return redirect()->route('promocion.index');
     }
 
     /**
@@ -55,16 +81,27 @@ class PromocionController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Promocion $promocion)
+    public function update(Request $request, $id)
     {
-        //
+        /*$request->validate([
+            'name' => 'required|string|max:255',
+            'telefono' => 'required|integer',
+        ]);*/
+
+        $promocion = Promocion::findOrFail($id);
+        $promocion->update($request->all());
+
+        return redirect()->route('promocion.index')->with('success', 'Promocion actualizada exitosamente.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Promocion $promocion)
+    public function destroy( $id)
     {
-        //
+        $promocion = Promocion::findOrFail($id);
+        $promocion->update(['estado' => 'i']);
+
+        return redirect()->route('promocion.index')->with('success', 'Promocion eliminada exitosamente.');
     }
 }

@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Producto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Contador;
 
 class ProductoController extends Controller
 {
@@ -13,6 +16,9 @@ class ProductoController extends Controller
      */
     public function index()
     {
+        $contar = new Contador();
+        $num = $contar->contarModel(7);
+
         $productos = DB::table('productos as p')
                     ->join('categorias as c', 'c.id','p.id_categoria')
                     ->where('p.estado','a')
@@ -20,7 +26,7 @@ class ProductoController extends Controller
                     ->orderBy('p.id','asc')
                     ->get();
 
-        return view('Producto.index', compact('productos'));
+        return view('Producto.index', compact('productos','num'));
     }
 
     /**

@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Cliente;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Contador;
 
 class ClienteController extends Controller
 {
@@ -13,6 +16,9 @@ class ClienteController extends Controller
      */
     public function index()
     {
+        $contar = new Contador();
+        $num = $contar->contarModel(2);
+
         $clientes = DB::table('clientes as c')
         ->join('users as u', 'u.id','c.id_user')
         ->where('c.estado','a')
@@ -20,7 +26,7 @@ class ClienteController extends Controller
         ->orderBy('c.id','asc')
         ->get();
 
-        return view('Cliente.index', compact('clientes'));
+        return view('Cliente.index', compact('clientes','num'));
     }
 
     /**

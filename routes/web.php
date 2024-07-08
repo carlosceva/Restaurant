@@ -6,6 +6,7 @@ use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\DetalleMenuController;
 use App\Http\Controllers\PagoController;
 use App\Http\Controllers\PrivilegioController;
 use App\Http\Controllers\ProductoController;
@@ -51,12 +52,8 @@ Route::resource('/empresa', EmpresaController::class)->names([
     'destroy' => 'empresa.destroy',
 ]);
 
-Route::resource('/menu', MenuController::class)->names([
-    'index' => 'menu.index',
-    'store' => 'menu.store',
-    'update' => 'menu.update',
-    'destroy' => 'menu.destroy',
-]);
+Route::resource('menus', MenuController::class);
+Route::resource('menus.detalles', DetalleMenuController::class);
 
 Route::resource('/pago', PagoController::class)->names([
     'index' => 'pago.index',

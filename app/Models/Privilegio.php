@@ -7,5 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Privilegio extends Model
 {
-    use HasFactory;
+    protected $table = 'privilegios';
+
+    protected $primaryKey = 'id';
+    public $timestamps = true;
+    
+    protected $fillable = ['funcionalidad','id_rol','agregar','borrar','modificar','leer','estado'];
+
+    public function rol()
+    {
+        return $this->belongsTo(Role::class, 'id_rol');
+    }
 }

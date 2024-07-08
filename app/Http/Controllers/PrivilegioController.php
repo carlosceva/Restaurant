@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Privilegio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Contador;
+use App\Models\Role;
 
 class PrivilegioController extends Controller
 {
@@ -13,16 +17,13 @@ class PrivilegioController extends Controller
      */
     public function index()
     {
-        //$privilegios = Privilegio::all();
+        $contar = new Contador();
+        $num = $contar->contarModel(6);
 
-        $privilegios = DB::table('privilegios as p')
-                    ->join('roles as r','p.id_rol','r.id')
-                    ->where('p.estado','a')
-                    ->select('p.id as id','p.funcionalidad as funcion','r.nombre as rol','p.agregar as agregar','p.borrar as borrar','p.modificar as modificar','p.leer as leer','p.estado as estado')
-                    ->orderBy('p.id','asc')
-                    ->get();
+        $privilegios = Privilegio::with('rol')->where('estado', 'a')->get();
+        $roles = Role::where('estado', 'a')->get();
 
-        return view('Privilegio.index', compact('privilegios'));
+        return view('Privilegio.index', compact('privilegios','roles','num'));
     }
 
     /**
@@ -38,7 +39,22 @@ class PrivilegioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'rol_id' => 'required|exists:roles,id', // Validamos que el rol exista
+            'funcion' => 'required',
+        ]);
+
+        $privilegio = new Privilegio();
+        $privilegio->id_rol = $request->rol_id; // Guardamos el ID del rol
+        $privilegio->funcionalidad = $request->funcion;
+        $privilegio->agregar = $request->has('agregar');
+        $privilegio->borrar = $request->has('borrar');
+        $privilegio->modificar = $request->has('modificar');
+        $privilegio->leer = $request->has('leer');
+        $privilegio->estado = 'a';
+        $privilegio->save();
+
+        return redirect()->route('privilegio.index')->with('success', 'Privilegio creado exitosamente.');
     }
 
     /**
@@ -62,7 +78,22 @@ class PrivilegioController extends Controller
      */
     public function update(Request $request, Privilegio $privilegio)
     {
-        //
+        $request->validate([
+            'rol_id' => 'required|exists:roles,id', // Validamos que el rol exista
+            'funcion' => 'required',
+            'estado' => 'required|in:a,i',
+        ]);
+
+        $privilegio->id_rol = $request->rol_id; // Actualizamos el ID del rol
+        $privilegio->funcionalidad = $request->funcion;
+        $privilegio->agregar = $request->has('agregar');
+        $privilegio->borrar = $request->has('borrar');
+        $privilegio->modificar = $request->has('modificar');
+        $privilegio->leer = $request->has('leer');
+        $privilegio->estado = $request->estado;
+        $privilegio->save();
+
+        return redirect()->route('privilegio.index')->with('success', 'Privilegio actualizado exitosamente.');
     }
 
     /**
@@ -70,6 +101,8 @@ class PrivilegioController extends Controller
      */
     public function destroy(Privilegio $privilegio)
     {
-        //
+        $privilegio->estado = 'i';
+        $privilegio->save();
+        return redirect()->route('privilegio.index')->with('success', 'Privilegio desactivado exitosamente.');
     }
 }

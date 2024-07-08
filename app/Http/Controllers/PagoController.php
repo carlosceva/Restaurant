@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Pago;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Contador;
 
 class PagoController extends Controller
 {
@@ -13,6 +16,9 @@ class PagoController extends Controller
      */
     public function index()
     {
+        $contar = new Contador();
+        $num = $contar->contarModel(5);
+
         $pagos = DB::table('pagos as p')
         ->join('clientes as c', 'c.id','p.id_cliente')
         ->where('p.estado','a')
@@ -20,7 +26,7 @@ class PagoController extends Controller
         ->orderBy('p.id','asc')
         ->get();
 
-        return view('Pago.index', compact('pagos'));
+        return view('Pago.index', compact('pagos','num'));
     }
 
     /**

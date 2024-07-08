@@ -9,8 +9,15 @@ class DetalleMenu extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['id_producto', 'id_menu', 'estado'];
+
     public function producto()
     {
-        return $this->belongsTo(Producto::class, 'id_producto', 'id');
+        return $this->belongsTo(Producto::class, 'id_producto');
+    }
+
+    public function menu()
+    {
+        return $this->belongsTo(Menu::class, 'id_menu');
     }
 }

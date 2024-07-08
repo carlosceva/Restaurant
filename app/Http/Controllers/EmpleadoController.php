@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Empleado;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Contador;
 
 class EmpleadoController extends Controller
 {
@@ -13,6 +16,9 @@ class EmpleadoController extends Controller
      */
     public function index()
     {
+        $contar = new Contador();
+        $num = $contar->contarModel(3);
+
         $empleados = DB::table('empleados as e')
         ->join('users as u', 'u.id','e.id_user')
         ->where('e.estado','a')
@@ -20,7 +26,7 @@ class EmpleadoController extends Controller
         ->orderBy('e.id','asc')
         ->get();
 
-        return view('Empleado.index', compact('empleados'));
+        return view('Empleado.index', compact('empleados','num'));
     }
 
     /**

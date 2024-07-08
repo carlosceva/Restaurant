@@ -27,6 +27,7 @@
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -225,7 +226,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('menu.index')}}" class="nav-link">
+                <a href="{{route('menus.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Gestionar Menu</p>
                 </a>
@@ -281,17 +282,16 @@
         <!-- Main row -->
         <div class="row">
           <!-- Left col -->
-          <section class="col-lg-12 connectedSortable">
+          
             <!-- Custom tabs (Charts with tabs)-->
-            <div class="card">
+            
               
             @yield('content')
 
-              
-            </div>
+            
             <!-- /.card -->
 
-          </section>
+          
           
         </div>
         <!-- /.row (main row) -->
@@ -301,10 +301,15 @@
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
+    <strong>Copyright &copy; 2024 <a href="https://adminlte.io">Netcrow</a>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.2.0
+        @if(isset($num))
+          Visitas:
+          <strong> {{$num}} </strong>
+        @else
+        <br>
+        @endif
     </div>
   </footer>
 
@@ -352,6 +357,24 @@
 <script src="dist/js/pages/dashboard.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+
+<script src="{{asset('dist/js/pages/dashboard.js')}}"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+        $('#usuarios').DataTable();
+        $('#categorias').DataTable();
+        $('#clientes').DataTable();
+        $('#empleados').DataTable();
+        $('#menus').DataTable();
+        $('#pagos').DataTable();
+        $('#privilegios').DataTable();
+        $('#productos').DataTable();
+        $('#promociones').DataTable();
+        $('#roles').DataTable();
+        $('#servicios').DataTable();
+        $('#ventas').DataTable();
+    </script>
 </body>
 </html>
 
