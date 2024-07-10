@@ -15,6 +15,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ServicioController;
 use App\Http\Controllers\VentaController;
 use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\ReporteController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Producto;
 
@@ -135,5 +136,8 @@ Route::get('/unauthorized', [EmpresaController::class, 'intruso'])->name('intrus
 Route::post('detalle_ventas/calcular', [DetalleVentaController::class, 'calcularTotal'])->name('detalle_ventas.calcular'); 
 Route::get('ventas/{venta}/detalles', [VentaController::class, 'detalles'])->name('ventas.detalles');
 Route::get('/menus/{menu}/detalles', [MenuController::class, 'detalles'])->name('menus.detalles');
+
+Route::resource('/reportes', ReporteController::class)->names(['index' => 'reportes.index',]);
+Route::get('/estadisticas', [ReporteController::class, 'estadisticas'])->name('estadisticas.index');
 
 require __DIR__.'/auth.php';
