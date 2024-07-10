@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class DetalleMenu extends Model
 {
-    use HasFactory;
+    protected $table = 'detalle_menus';
 
-    protected $fillable = ['id_producto', 'id_menu', 'estado'];
+    protected $fillable = ['id_menu', 'id_producto', 'estado'];
 
     public function producto()
     {

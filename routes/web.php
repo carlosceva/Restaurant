@@ -16,6 +16,7 @@ use App\Http\Controllers\ServicioController;
 use App\Http\Controllers\VentaController;
 use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
+use App\Models\Producto;
 
 Route::get('/', function () {
     return view('principal');
@@ -52,7 +53,17 @@ Route::resource('/empresa', EmpresaController::class)->names([
     'destroy' => 'empresa.destroy',
 ]);
 
-Route::resource('menus', MenuController::class);
+Route::put('/empresa/{empresa}/nombre', [EmpresaController::class, 'nombre'])->name('empresa.nombre');
+Route::put('/empresa/{empresa}/direccion', [EmpresaController::class, 'direccion'])->name('empresa.direccion');
+Route::put('/empresa/{empresa}/correo', [EmpresaController::class, 'correo'])->name('empresa.correo');
+Route::put('/empresa/{empresa}/telefono', [EmpresaController::class, 'telefono'])->name('empresa.telefono');
+
+Route::resource('/menu', MenuController::class)->names([
+    'index' => 'menu.index',
+    'store' => 'menu.store',
+    'update' => 'menu.update',
+    'destroy' => 'menu.destroy',
+]);
 Route::resource('menus.detalles', DetalleMenuController::class);
 
 Route::resource('/pago', PagoController::class)->names([
@@ -120,5 +131,9 @@ Route::resource('/usuario', UsuarioController::class)->names([
 
 //vista para intrusos
 Route::get('/unauthorized', [EmpresaController::class, 'intruso'])->name('intruso');
+
+Route::post('detalle_ventas/calcular', [DetalleVentaController::class, 'calcularTotal'])->name('detalle_ventas.calcular'); 
+Route::get('ventas/{venta}/detalles', [VentaController::class, 'detalles'])->name('ventas.detalles');
+Route::get('/menus/{menu}/detalles', [MenuController::class, 'detalles'])->name('menus.detalles');
 
 require __DIR__.'/auth.php';

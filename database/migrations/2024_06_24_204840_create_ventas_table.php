@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('fecha');
             $table->double('total');
             $table->unsignedBigInteger('id_cliente');
-            $table->unsignedBigInteger('id_empleado');
+            $table->unsignedBigInteger('id_empleado')->nullable();
             $table->unsignedBigInteger('id_promocion')->nullable();
             $table->unsignedBigInteger('id_servicio');
             $table->string('estado')->default('a');

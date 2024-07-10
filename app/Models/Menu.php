@@ -7,12 +7,21 @@ use Illuminate\Database\Eloquent\Model;
 
 class Menu extends Model
 {
-    use HasFactory;
+    protected $table = 'menus';
 
-    protected $fillable = ['descripcion', 'estado'];
+    protected $fillable = [
+        'descripcion',
+        'estado'
+    ];
 
     public function detalleMenus()
     {
-        return $this->hasMany(DetalleMenu::class, 'id_menu');
+        return $this->hasMany(DetalleMenu::class, 'id_menu', 'id');
+    }
+
+    public function productos()
+    {
+        return $this->belongsToMany(Producto::class, 'detalle_menus', 'id_menu', 'id_producto')
+                    ->withPivot('id', 'estado'); // Puedes añadir más campos pivot si es necesario
     }
 }

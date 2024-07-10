@@ -19,7 +19,7 @@
                     <div class="input-group">
                         <label class="form-control-plaintext" id="nombre" style="font-weight: normal">{{ $datos->nombre }}</label>
                         <button class="btn btn-link" type="button">
-                        <i class="fa fa-pen" aria-hidden="true"></i>
+                        <a href="#" data-toggle="modal" data-target="#editNombreModal{{ $datos->id }}"><i class="fa fa-pen" aria-hidden="true"></i></a>
                         </button>
                     </div>
                 </div>
@@ -31,7 +31,7 @@
                     <div class="input-group">
                         <label class="form-control-plaintext" id="nombre" style="font-weight: normal">{{ $datos->direccion }}</label>
                         <button class="btn btn-link" type="button">
-                        <i class="fa fa-pen" aria-hidden="true"></i>
+                        <a href="#" data-toggle="modal" data-target="#editDireccionModal{{ $datos->id }}"><i class="fa fa-pen" aria-hidden="true"></i></a>
                         </button>
                     </div>
                 </div>
@@ -43,7 +43,7 @@
                     <div class="input-group">
                         <label class="form-control-plaintext" id="nombre" style="font-weight: normal">{{ $datos->correo }}</label>
                         <button class="btn btn-link" type="button">
-                        <i class="fa fa-pen" aria-hidden="true"></i>
+                        <a href="#" data-toggle="modal" data-target="#editCorreoModal{{ $datos->id }}"><i class="fa fa-pen" aria-hidden="true"></i></a>
                         </button>
                     </div>
                 </div>
@@ -55,13 +55,13 @@
                     <div class="input-group">
                         <label class="form-control-plaintext" id="nombre" style="font-weight: normal">{{ $datos->telefono }}</label>
                         <button class="btn btn-link" type="button">
-                        <i class="fa fa-pen" aria-hidden="true"></i>
+                        <a href="#" data-toggle="modal" data-target="#editTelefonoModal{{ $datos->id }}"><i class="fa fa-pen" aria-hidden="true"></i></a>
                         </button>
                     </div>
                 </div>
                 
             </form>
         </div>
-    
+        @include('Configuracion.modificar', ['datos' => $datos])
 </div>
 @endsection

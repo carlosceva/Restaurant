@@ -42,7 +42,34 @@ class EmpleadoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validar los datos del formulario
+        $request->validate([
+            'nombre' => 'required',
+            'telefono' => 'required',
+            'turno' => 'required',
+            'ci' => 'required|unique:empleados',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:6',
+        ]);
+
+        // Crear el usuario
+        $user = User::create([
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'estado' => 'activo',
+        ]);
+
+        // Crear el empleado
+        $empleado = Empleado::create([
+            'nombre' => $request->nombre,
+            'telefono' => $request->telefono,
+            'turno' => $request->turno,
+            'ci' => $request->ci,
+            'id_user' => $user->id,
+            'estado' => 'activo',
+        ]);
+
+        return redirect()->route('empleado.index')->with('success', 'Empleado creado exitosamente');
     }
 
     /**
@@ -66,7 +93,35 @@ class EmpleadoController extends Controller
      */
     public function update(Request $request, Empleado $empleado)
     {
-        //
+        $request->validate([
+            'nombre' => 'required',
+            'telefono' => 'required',
+            'turno' => 'required',
+            'ci' => 'required|unique:empleados,ci,' . $empleado->id,
+            'email' => 'required|email|unique:users,email,' . $empleado->user->id,
+        ]);
+    
+        // Actualizar el usuario
+        $empleado->user->update([
+            'email' => $request->email,
+        ]);
+    
+        // Si se proporciona una nueva contraseña, actualizarla
+        if ($request->filled('password')) {
+            $empleado->user->update([
+                'password' => Hash::make($request->password),
+            ]);
+        }
+    
+        // Actualizar el empleado
+        $empleado->update([
+            'nombre' => $request->nombre,
+            'telefono' => $request->telefono,
+            'turno' => $request->turno,
+            'ci' => $request->ci,
+        ]);
+    
+        return redirect()->route('empleado.index')->with('success', 'Empleado actualizado exitosamente');
     }
 
     /**
@@ -74,6 +129,11 @@ class EmpleadoController extends Controller
      */
     public function destroy(Empleado $empleado)
     {
-        //
+        $empleado->update(['estado' => 'i']);
+
+        // Cambiar el estado del usuario asociado a 'i'
+        $empleado->user->update(['estado' => 'i']);
+
+        return redirect()->route('empleado.index')->with('success', 'Empleado desactivado exitosamente');
     }
 }

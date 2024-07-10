@@ -6,11 +6,11 @@
 <div class="card-header">
                 <h1 class="card-title">
                 <i class="fas fa-clock mr-1"></i>
-                <b>GESTIONAR PRODUCTO   </b> 
+                <b>GESTIONAR PRODUCTO</b> 
                 </h1>
                 <div class="float-right d-sm-block"> 
                     <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                        <a href="#" data-toggle="modal" data-target="#agregarHorarioModal" class="btn btn-success"><i class="fa fa-plus"></i>&nbsp; Agregar</a>
+                        <a href="#" data-toggle="modal" data-target="#agregarModal" class="btn btn-success"><i class="fa fa-plus"></i>&nbsp; Agregar</a>
                     </div> 
                 </div>
 </div>
@@ -47,8 +47,8 @@
             <tbody class="table-group-divider">
                 @foreach($productos as $producto)
                 <tr>
-                    <td>{{ $producto->idp }}</td>
-                    <td>{{ $producto->producto }}</td>
+                    <td>{{ $producto->id }}</td>
+                    <td>{{ $producto->nombre }}</td>
                     <td>{{ $producto->descripcion }}</td>
                     <td>{{ $producto->categoria }}</td>
                     <td>{{ $producto->precio }}</td>
@@ -60,15 +60,17 @@
                         <?php endif; ?>
                     </td>
                     <td>
-                        <a href="#" data-toggle="modal" data-target=""><i class="fa fa-edit" aria-hidden="true"></i></a>
+                        <a href="#" data-toggle="modal" data-target="#editModal{{ $producto->id }}"><i class="fa fa-edit" aria-hidden="true"></i></a>
                         &nbsp;
-                        <a href="#" data-toggle="modal" data-target=""> <i class="fa fa-trash" aria-hidden="true"></i></a>
+                        <a href="#" data-toggle="modal" data-target="#deleteModal{{ $producto->id }}"> <i class="fa fa-trash" aria-hidden="true"></i></a>
                     </td>
                 </tr>
-
+                @include('Producto.modificar', ['producto' => $producto])
+                @include('Producto.eliminar', ['producto' => $producto])               
                 @endforeach
             </tbody>
         </table>
     </div>
 </div>
+@include('Producto.agregar')  
 @endsection

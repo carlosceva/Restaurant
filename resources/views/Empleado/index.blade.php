@@ -56,16 +56,17 @@
                     <td>{{ $empleado->turno }}</td>
                     <td>{{ $empleado->estado }}</td>
                     <td>
-                        <a href="#" data-toggle="modal" data-target=""><i class="fa fa-edit" aria-hidden="true"></i></a>
+                        <a href="#" data-toggle="modal" data-target="#editModal{{ $empleado->id }}"><i class="fa fa-edit" aria-hidden="true"></i></a>
                         &nbsp;
-                        <a href="#" data-toggle="modal" data-target=""> <i class="fa fa-trash" aria-hidden="true"></i></a>
+                        <a href="#" data-toggle="modal" data-target="#deleteModal{{ $empleado->id }}"> <i class="fa fa-trash" aria-hidden="true"></i></a>
                     </td>
-                </tr>
-
-                @endforeach
-            </tbody>
-        </table>
+                    </tr>
+                    @include('Empleado.modificar', ['empleado' => $empleado])
+                    @include('Empleado.eliminar', ['emplead' => $empleado]) 
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
-</div>
-             
+    @include('Empleado.agregar')
 @endsection

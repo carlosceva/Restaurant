@@ -74,4 +74,36 @@ class EmpresaController extends Controller
     {
         return view('intruso');
     }
+
+    public function nombre(Request $request, Empresa $empresa)
+    {
+        $empresa->nombre = $request->nombre; 
+        $empresa->save();
+
+        return redirect()->route('empresa.index')->with('success', 'Nombre actualizado exitosamente.');
+    }
+
+    public function direccion(Request $request, Empresa $empresa)
+    {
+        $empresa->direccion = $request->direccion; 
+        $empresa->save();
+
+        return redirect()->route('empresa.index')->with('success', 'Direccion actualizado exitosamente.');
+    }
+
+    public function correo(Request $request, Empresa $empresa)
+    {
+        $empresa->correo = $request->correo; 
+        $empresa->save();
+
+        return redirect()->route('empresa.index')->with('success', 'Correo electronico actualizado exitosamente.');
+    }
+
+    public function telefono(Request $request, Empresa $empresa)
+    {
+        $empresa->telefono = $request->telefono; 
+        $empresa->save();
+
+        return redirect()->route('empresa.index')->with('success', 'Telefono actualizado exitosamente.');
+    }
 }

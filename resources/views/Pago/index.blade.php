@@ -10,7 +10,7 @@
                 </h1>
                 <div class="float-right d-sm-block"> 
                     <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                        <a href="#" data-toggle="modal" data-target="#agregarHorarioModal" class="btn btn-success"><i class="fa fa-plus"></i>&nbsp; Agregar</a>
+                        <a href="#" data-toggle="modal" data-target="#agregarModal" class="btn btn-success"><i class="fa fa-plus"></i>&nbsp; Agregar</a>
                     </div> 
                 </div>
 </div>
@@ -48,19 +48,21 @@
                 <tr>
                     <td>{{ $pago->id }}</td>
                     <td>{{ $pago->cliente }}</td>
-                    <td>{{ $pago->venta }}</td>
+                    <td>{{ $pago->id_venta }}</td>
                     <td>{{ $pago->metodopago }}</td>
                     <td>{{ $pago->estado == 'a' ? 'Activo' : 'Inactivo' }} </td>
                     <td>
-                        <a href="#" data-toggle="modal" data-target=""><i class="fa fa-edit" aria-hidden="true"></i></a>
+                        <a href="#" data-toggle="modal" data-target="#editModal{{ $pago->id }}"><i class="fa fa-edit" aria-hidden="true"></i></a>
                         &nbsp;
-                        <a href="#" data-toggle="modal" data-target=""> <i class="fa fa-trash" aria-hidden="true"></i></a>
+                        <a href="#" data-toggle="modal" data-target="#deleteModal{{ $pago->id }}"> <i class="fa fa-trash" aria-hidden="true"></i></a>
                     </td>
                 </tr>
-
+                @include('Pago.modificar', ['pago' => $pago])
+                @include('Pago.eliminar', ['pago' => $pago])               
                 @endforeach
             </tbody>
         </table>
     </div>
 </div>
+@include('Pago.agregar')  
 @endsection

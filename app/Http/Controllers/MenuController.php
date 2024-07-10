@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Menu;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Auth;
+use App\Models\Producto;
 use App\Models\Contador;
+use App\Models\DetalleMenu;
+use Illuminate\Http\Request;
 
 class MenuController extends Controller
 {
@@ -19,52 +18,46 @@ class MenuController extends Controller
         $contar = new Contador();
         $num = $contar->contarModel(4);
 
-        $menus = Menu::with('detalleMenus.producto')->get();
-        return view('Menu.index', compact('menus'));
+        $menus = Menu::with('detalleMenus.producto')->where('estado', 'a')->paginate(10);
+        $productos = Producto::where('estado', 'a')->get();
+
+        return view('Menu.index', compact('menus', 'productos','num'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        return view('Menu.create');
-    }
-
+    
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        $menu = Menu::create($request->all());
-        return redirect()->route('menus.index')->with('success', 'Menu created successfully');
-    }
+        $detalles = json_decode($request->detalles, true);
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Menu $menu)
-    {
-        //
-    }
+        $validatedData = $request->validate([
+            'descripcion' => 'required|string',
+            'detalles' => 'required',
+        ]);
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit($id)
-    {
-        $menu = Menu::find($id);
-        return view('Menu.edit', compact('menu'));
-    }
+        foreach ($detalles as $detalle) {
+            $detalle = (object)$detalle;
+            $request->validate([
+                'detalles.*.producto_id' => 'required|exists:productos,id',
+            ]);
+        }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, $id)
-    {
-        $menu = Menu::find($id);
-        $menu->update($request->all());
-        return redirect()->route('menus.index')->with('success', 'Menu updated successfully');
+        $menu = Menu::create([
+            'descripcion' => $request->descripcion,
+            'estado' => 'a',
+        ]);
+
+        foreach ($detalles as $detalle) {
+            DetalleMenu::create([
+                'id_menu' => $menu->id,
+                'id_producto' => $detalle['producto_id'],
+                'estado' => 'a',
+            ]);
+        }
+
+        return redirect()->route('menu.index')->with('success', 'Menú agregado correctamente.');
     }
 
     /**
@@ -72,8 +65,34 @@ class MenuController extends Controller
      */
     public function destroy($id)
     {
-        $menu = Menu::find($id);
+        $menu = Menu::findOrFail($id);
         $menu->update(['estado' => 'i']);
-        return redirect()->route('menus.index')->with('success', 'Menu deleted successfully');
+        DetalleMenu::where('id_menu', $id)->update(['estado' => 'i']);
+
+        return redirect()->route('menu.index')->with('success', 'Menú eliminado correctamente.');
+    }
+
+    public function detalles(Menu $menu)
+    {
+        $html = '<div class="container">';
+        $html .= '<h2>Menú #' . $menu->id . '</h2>';
+        $html .= '<p>Descripción: ' . $menu->descripcion . '</p>';
+
+        $html .= '<h3>Detalles de Menú:</h3>';
+        $html .= '<table class="table">';
+        $html .= '<thead><tr><th>Producto</th><th>Precio</th></tr></thead>';
+        $html .= '<tbody>';
+        foreach ($menu->detalleMenus as $detalle) {
+            $precio = $detalle->producto->precio;
+            $html .= '<tr>';
+            $html .= '<td>' . $detalle->producto->nombre . '</td>';
+            $html .= '<td>' . number_format($precio, 2) . '</td>';
+            $html .= '</tr>';
+        }
+        $html .= '</tbody></table></div>';
+
+        return $html;
     }
 }
+
+
