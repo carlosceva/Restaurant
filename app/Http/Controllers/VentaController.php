@@ -21,19 +21,42 @@ class VentaController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
+    {   
+        $usuario = auth()->user();
+        
         $contar = new Contador();
         $num = $contar->contarModel(12);
+        
+        $rol = $usuario->rol->nombre;
+        
 
+        if($usuario->rol->nombre === 'Cliente'){
+            $idCliente = $usuario->cliente->id; 
+            $ventas = Venta::where('id_cliente', $idCliente)
+                     ->where('estado', 'a')
+                     ->paginate(10);
+        }
         //$ventas = Venta::with(['cliente', 'empleado', 'promocion', 'servicio', 'detalleVentas.producto'])->get();
         //return view('Venta.index', compact('ventas','num'));
-        $ventas = Venta::with(['cliente', 'empleado', 'promocion', 'servicio'])
-                    ->where('estado', 'a')->paginate(10); // Ajusta el número de ventas por página según necesites
+
+        if($usuario->rol->nombre === 'Cajero'){
+            $idEmpleado = $usuario->empleado->id; 
+            $ventas = Venta::where('id_empleado', $idEmpleado)
+                     ->where('estado', 'a')
+                     ->paginate(10);
+        }
+
+        if($usuario->rol->nombre == 'Administrador' ){
+            
+            $ventas = Venta::with(['cliente', 'empleado', 'promocion', 'servicio'])
+                        ->where('estado', 'a')->paginate(10);
+        } 
+        
         $clientes = Cliente::where('estado','a')->get();
         $empleados = Empleado::where('estado','a')->get();
         $promociones = Promocion::where('estado','a')->get();
         $servicios = Servicio::where('estado','a')->get();
-        $productos = Producto::where('estado','a')->get(); // Asegúrate de tener la relación definida en el modelo Venta
+        $productos = Producto::where('estado','a')->get(); 
 
         return view('Venta.index', compact('ventas','clientes', 'empleados', 'promociones', 'servicios', 'productos','num'));
         
@@ -52,6 +75,8 @@ class VentaController extends Controller
      */
     public function store(Request $request)
     {
+        $usuario = auth()->user()->id;
+
         // Decodificar la cadena JSON de detalles
         $detalles = json_decode($request->detalles, true);
 
@@ -79,7 +104,7 @@ class VentaController extends Controller
             'fecha' => $fechaActual,
             'estado' => 'a',
             'id_promocion' => $request->has('promocion_id') ? $request->promocion_id : null,
-            'id_empleado' => 1, // O puedes obtener el ID del empleado autenticado
+            'id_empleado' => $usuario, // O puedes obtener el ID del empleado autenticado
             'total' => 0, // Inicializamos el total en 0
         ]);
 

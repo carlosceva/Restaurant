@@ -18,16 +18,32 @@ class PagoController extends Controller
      */
     public function index()
     {
+        $usuario = auth()->user();
+
         $contar = new Contador();
         $num = $contar->contarModel(5);
 
-        $pagos = DB::table('pagos as p')
-        ->join('clientes as c', 'c.id','p.id_cliente')
-        ->where('p.estado','a')
-        ->select('p.id as id', 'p.metodo_pago as metodopago', 'c.nombre as cliente','p.id_cliente as id_cliente','p.estado as estado', 'p.id_venta as id_venta')
-        ->orderBy('p.id','asc')
-        ->get();
+        $rol = $usuario->rol->nombre;
+        
+        if($usuario->rol->nombre === 'Cliente'){
+            $idCliente = $usuario->cliente->id; 
+            $pagos = DB::table('pagos as p')
+                ->join('clientes as c', 'c.id','p.id_cliente')
+                ->where('p.estado','a')
+                ->where('id_cliente', $idCliente)
+                ->select('p.id as id', 'p.metodo_pago as metodopago', 'c.nombre as cliente','p.id_cliente as id_cliente','p.estado as estado', 'p.id_venta as id_venta')
+                ->orderBy('p.id','asc')
+                ->get();
+        }
 
+        if($usuario->rol->nombre == 'Administrador' || $usuario->rol->nombre == 'Cajero' ){
+            $pagos = DB::table('pagos as p')
+            ->join('clientes as c', 'c.id','p.id_cliente')
+            ->where('p.estado','a')
+            ->select('p.id as id', 'p.metodo_pago as metodopago', 'c.nombre as cliente','p.id_cliente as id_cliente','p.estado as estado', 'p.id_venta as id_venta')
+            ->orderBy('p.id','asc')
+            ->get();
+        }
         $clientes = Cliente::where('estado','a')->get();
         $ventas =Venta::where('estado','a')->get();
 

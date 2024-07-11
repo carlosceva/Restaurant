@@ -18,4 +18,14 @@ class Usuario extends Model
     {
         return $this->hasOne(Role::class);
     }
+
+    public function cliente()
+    {
+        return $this->hasOne(Cliente::class, 'id_user');
+    }
+
+    public function empleado()
+    {
+        return $this->hasOne(Empleado::class, 'id_user');
+    }
 }

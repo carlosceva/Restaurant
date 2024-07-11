@@ -18,4 +18,9 @@ class Cliente extends Model
     {
         return $this->belongsTo(Usuario::class, 'id_user');
     }
+
+    public function ventas()
+{
+    return $this->hasMany(Venta::class);
+}
 }
