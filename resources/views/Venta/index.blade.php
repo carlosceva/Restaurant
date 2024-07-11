@@ -91,9 +91,10 @@
         detalleVentaModal.addEventListener('show.bs.modal', function (event) {
             var button = event.relatedTarget;
             var ventaId = button.getAttribute('data-venta-id');
+            var detallesUrl = "{{ route('ventas.detalles', ':id') }}".replace(':id', ventaId);
 
             // Realiza una petición AJAX para obtener los detalles de la venta
-            fetch('/ventas/' + ventaId + '/detalles') // Ajusta la ruta según tu configuración
+            fetch(detallesUrl) // Ajusta la ruta según tu configuración
                 .then(response => response.text())
                 .then(html => {
                     document.getElementById('detalleVentaModalBody').innerHTML = html;

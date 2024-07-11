@@ -13,4 +13,9 @@ class Usuario extends Model
     public $timestamps = true;
     
     protected $fillable = ['email','password','id_rol','id_empresa','estado'];
+
+    public function rol()
+    {
+        return $this->hasOne(Role::class);
+    }
 }

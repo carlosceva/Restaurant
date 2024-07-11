@@ -52,7 +52,7 @@
                 <tr>
                     <td>{{ $privilegio->id }}</td>
                     <td>{{ $privilegio->rol->nombre }}</td>
-                    <td>{{ $privilegio->funcion }}</td>
+                    <td>{{ $privilegio->funcionalidad }}</td>
                     <td>
                         @if($privilegio->agregar)
                             <i class="fa fa-check text-success"></i> <!-- Icono de ok en verde -->

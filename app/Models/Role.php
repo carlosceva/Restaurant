@@ -13,4 +13,9 @@ class Role extends Model
     public $timestamps = true;
     
     protected $fillable = ['nombre','estado'];
+
+    public function privilegios()
+    {
+        return $this->hasMany(Privilegio::class, 'id_rol', 'id');
+    }
 }

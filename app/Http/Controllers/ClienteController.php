@@ -47,7 +47,7 @@ class ClienteController extends Controller
         $request->validate([
             'nombre' => 'required',
             'direccion' => 'required',
-            'telefono' => 'required',
+            'telefono' => 'required|digits:8|max:8',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6',
         ]);
@@ -97,7 +97,7 @@ class ClienteController extends Controller
         $request->validate([
             'nombre' => 'required',
             'direccion' => 'required',
-            'telefono' => 'required',
+            'telefono' => 'required|digits:8|max:8',
             'email' => 'required|email|unique:users,email,' . $cliente->user->id,
         ]);
         

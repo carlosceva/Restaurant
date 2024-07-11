@@ -13,6 +13,7 @@
                     <div class="form-group">
                         <label for="rol_id">Rol</label>
                         <select class="form-control" id="rol_id" name="rol_id" required>
+                               <option value="">Seleccionar Rol</option>
                             @foreach($roles as $rol)
                                 <option value="{{ $rol->id }}">
                                     {{ $rol->nombre }}

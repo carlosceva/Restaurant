@@ -49,7 +49,7 @@
         <a href="{{ route('dashboard')}}" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
+        <a href="#" class="nav-link">Contact</a>       
       </li>
     </ul>
 
@@ -128,13 +128,16 @@
                with font-awesome or any other icon font library -->
                     
           <li class="nav-item">
+            
+          
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
-                Administracion
+                Administracion 
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
+           
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="{{route('usuario.index')}}" class="nav-link">

@@ -45,7 +45,7 @@ class EmpleadoController extends Controller
         // Validar los datos del formulario
         $request->validate([
             'nombre' => 'required',
-            'telefono' => 'required',
+            'telefono' => 'required|digits:8|max:8',
             'turno' => 'required',
             'ci' => 'required|unique:empleados',
             'email' => 'required|email|unique:users',
@@ -95,7 +95,7 @@ class EmpleadoController extends Controller
     {
         $request->validate([
             'nombre' => 'required',
-            'telefono' => 'required',
+            'telefono' => 'required|digits:8|max:8',
             'turno' => 'required',
             'ci' => 'required|unique:empleados,ci,' . $empleado->id,
             'email' => 'required|email|unique:users,email,' . $empleado->user->id,
