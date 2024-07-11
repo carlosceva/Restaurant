@@ -183,7 +183,7 @@
             </a>
           @endif
             <ul class="nav nav-treeview">
-            @if(array_filter(auth()->user()->rol->privilegios->toArray(), function($v, $k) {return in_array($v['funcionalidad'], ['Cliente'])&& $v['estado'] === 'a' && $v['modificar'];}, ARRAY_FILTER_USE_BOTH))
+            @if(array_filter(auth()->user()->rol->privilegios->toArray(), function($v, $k) {return in_array($v['funcionalidad'], ['Cliente'])&& $v['estado'] === 'a';}, ARRAY_FILTER_USE_BOTH))
               <li class="nav-item">
                 <a href="{{route('cliente.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>

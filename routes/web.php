@@ -31,7 +31,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+
 
 Route::resource('/cliente', ClienteController::class)->names([
     'index' => 'cliente.index',
@@ -130,14 +130,16 @@ Route::resource('/usuario', UsuarioController::class)->names([
     'destroy' => 'usuario.destroy',
 ]);
 
-//vista para intrusos
-Route::get('/unauthorized', [EmpresaController::class, 'intruso'])->name('intruso');
-
 Route::post('detalle_ventas/calcular', [DetalleVentaController::class, 'calcularTotal'])->name('detalle_ventas.calcular'); 
 Route::get('ventas/{venta}/detalles', [VentaController::class, 'detalles'])->name('ventas.detalles');
 Route::get('/menus/{menu}/detalles', [MenuController::class, 'detalles'])->name('menus.detalles');
 
 Route::resource('/reportes', ReporteController::class)->names(['index' => 'reportes.index',]);
 Route::get('/estadisticas', [ReporteController::class, 'estadisticas'])->name('estadisticas.index');
+
+});
+
+//vista para intrusos
+Route::get('/unauthorized', [EmpresaController::class, 'intruso'])->name('intruso');
 
 require __DIR__.'/auth.php';

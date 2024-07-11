@@ -8,11 +8,13 @@
                 <i class="fas fa-clock mr-1"></i>
                 <b>GESTIONAR CLIENTE   </b> 
                 </h1>
+                @if(array_filter(auth()->user()->rol->privilegios->toArray(), function($v, $k) {return in_array($v['funcionalidad'], ['Cliente']) && $v['estado'] === 'a' && $v['agregar'] ;}, ARRAY_FILTER_USE_BOTH))
                 <div class="float-right d-sm-block"> 
                     <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                         <a href="#" data-toggle="modal" data-target="#addModal" class="btn btn-success"><i class="fa fa-plus"></i>&nbsp; Agregar</a>
                     </div> 
                 </div>
+                @endif
 </div>
     
 @if (session('success'))
@@ -54,9 +56,13 @@
                         <td>{{ $cliente->telefono }}</td>
                         <td>{{ $cliente->estado == 'a' ? 'Activo' : 'Inactivo' }} </td>
                         <td>
-                            <a href="#" data-toggle="modal" data-target="#editModal{{ $cliente->id }}"><i class="fa fa-edit" aria-hidden="true"></i></a>
+                        @if(array_filter(auth()->user()->rol->privilegios->toArray(), function($v, $k) {return in_array($v['funcionalidad'], ['Cliente'])&& $v['estado'] === 'a' && $v['modificar'];}, ARRAY_FILTER_USE_BOTH))
+                                <a href="#" data-toggle="modal" data-target="#editModal{{ $cliente->id }}"><i class="fa fa-edit" aria-hidden="true"></i></a>
+                            @endif
                             &nbsp;
-                            <a href="#" data-toggle="modal" data-target="#deleteModal{{ $cliente->id }}"> <i class="fa fa-trash" aria-hidden="true"></i></a>
+                            @if(array_filter(auth()->user()->rol->privilegios->toArray(), function($v, $k) {return in_array($v['funcionalidad'], ['Cliente'])&& $v['estado'] === 'a' && $v['borrar'];}, ARRAY_FILTER_USE_BOTH))
+                                <a href="#" data-toggle="modal" data-target="#deleteModal{{ $cliente->id }}"> <i class="fa fa-trash" aria-hidden="true"></i></a>
+                            @endif
                         </td>
                     </tr>
                     @include('Cliente.modificar', ['cliente' => $cliente])

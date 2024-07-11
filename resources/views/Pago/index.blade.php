@@ -8,11 +8,13 @@
                 <i class="fas fa-clock mr-1"></i>
                 <b>GESTIONAR PAGO</b> 
                 </h1>
+                @if(array_filter(auth()->user()->rol->privilegios->toArray(), function($v, $k) {return in_array($v['funcionalidad'], ['Pago']) && $v['estado'] === 'a' && $v['agregar'] ;}, ARRAY_FILTER_USE_BOTH))
                 <div class="float-right d-sm-block"> 
                     <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                         <a href="#" data-toggle="modal" data-target="#agregarModal" class="btn btn-success"><i class="fa fa-plus"></i>&nbsp; Agregar</a>
                     </div> 
                 </div>
+                @endif
 </div>
     
 @if (session('success'))
@@ -40,7 +42,9 @@
                     <th># VENTA</th>
                     <th>METODO PAGO</th>
                     <th>ESTADO</th>
-                    <th>ACCIONES</th>
+                    @if(array_filter(auth()->user()->rol->privilegios->toArray(), function($v, $k) {return in_array($v['funcionalidad'], ['Pago']) && $v['estado'] === 'a' && ($v['modificar'] || $v['borrar']);}, ARRAY_FILTER_USE_BOTH))
+                        <th>ACCIONES</th>
+                    @endif
                 </tr>
             </thead>
             <tbody class="table-group-divider">
@@ -51,11 +55,17 @@
                     <td>{{ $pago->id_venta }}</td>
                     <td>{{ $pago->metodopago }}</td>
                     <td>{{ $pago->estado == 'a' ? 'Activo' : 'Inactivo' }} </td>
+                    @if(array_filter(auth()->user()->rol->privilegios->toArray(), function($v, $k) {return in_array($v['funcionalidad'], ['Pago'])&& $v['estado'] === 'a' && ($v['modificar'] || $v['borrar']);}, ARRAY_FILTER_USE_BOTH))
                     <td>
-                        <a href="#" data-toggle="modal" data-target="#editModal{{ $pago->id }}"><i class="fa fa-edit" aria-hidden="true"></i></a>
+                        @if(array_filter(auth()->user()->rol->privilegios->toArray(), function($v, $k) {return in_array($v['funcionalidad'], ['Pago'])&& $v['estado'] === 'a' && $v['modificar'];}, ARRAY_FILTER_USE_BOTH))
+                            <a href="#" data-toggle="modal" data-target="#editModal{{ $pago->id }}"><i class="fa fa-edit" aria-hidden="true"></i></a>
+                        @endif
                         &nbsp;
-                        <a href="#" data-toggle="modal" data-target="#deleteModal{{ $pago->id }}"> <i class="fa fa-trash" aria-hidden="true"></i></a>
+                        @if(array_filter(auth()->user()->rol->privilegios->toArray(), function($v, $k) {return in_array($v['funcionalidad'], ['Pago'])&& $v['estado'] === 'a' && $v['borrar'];}, ARRAY_FILTER_USE_BOTH))
+                            <a href="#" data-toggle="modal" data-target="#deleteModal{{ $pago->id }}"> <i class="fa fa-trash" aria-hidden="true"></i></a>
+                        @endif
                     </td>
+                    @endif
                 </tr>
                 @include('Pago.modificar', ['pago' => $pago])
                 @include('Pago.eliminar', ['pago' => $pago])               

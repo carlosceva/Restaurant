@@ -8,11 +8,13 @@
                 <i class="fas fa-clock mr-1"></i>
                 <b>GESTIONAR VENTA</b> 
                 </h1>
+                @if(array_filter(auth()->user()->rol->privilegios->toArray(), function($v, $k) {return in_array($v['funcionalidad'], ['Venta']) && $v['estado'] === 'a' && $v['agregar'] ;}, ARRAY_FILTER_USE_BOTH))
                 <div class="float-right d-sm-block"> 
                     <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                         <a href="" data-toggle="modal" data-target="#agregarModal" class="btn btn-success"><i class="fa fa-plus"></i>&nbsp; Agregar</a>
                     </div> 
                 </div>
+                @endif
 </div>
     
 @if (session('success'))
@@ -62,7 +64,9 @@
                                 Ver Detalles
                             </button>
                             &nbsp;
-                            <a href="#" data-toggle="modal" data-target="#deleteModal{{ $venta->id }}"> <i class="fa fa-trash" aria-hidden="true"></i></a>
+                            @if(array_filter(auth()->user()->rol->privilegios->toArray(), function($v, $k) {return in_array($v['funcionalidad'], ['Venta'])&& $v['estado'] === 'a' && $v['borrar'];}, ARRAY_FILTER_USE_BOTH))
+                                <a href="#" data-toggle="modal" data-target="#deleteModal{{ $venta->id }}"> <i class="fa fa-trash" aria-hidden="true"></i></a>
+                            @endif
                         </td>
                     </tr>
                     @include('Venta.eliminar', ['venta' => $venta])
