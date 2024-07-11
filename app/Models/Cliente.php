@@ -7,6 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cliente extends Model
 {
+    protected $table = 'clientes';
+
+    protected $primaryKey = 'id';
+    public $timestamps = true;
+
     protected $fillable = ['nombre', 'direccion', 'telefono', 'id_user', 'estado'];
 
     public function user()

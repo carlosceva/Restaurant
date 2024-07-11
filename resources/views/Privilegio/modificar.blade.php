@@ -15,7 +15,7 @@
                         <label for="rol_id">Rol</label>
                         <select class="form-control" id="rol_id" name="rol_id" required>
                             @foreach($roles as $rol)
-                                <option value="{{ $rol->id }}" {{ $privilegio->rol_id == $rol->id ? 'selected' : '' }}>
+                                <option value="{{ $rol->id }}" {{ $privilegio->id_rol == $rol->id ? 'selected' : '' }}>
                                     {{ $rol->nombre }}
                                 </option>
                             @endforeach
@@ -23,7 +23,7 @@
                     </div>
                     <div class="form-group">
                         <label for="funcion">Funcionalidad</label>
-                        <input type="text" class="form-control" id="funcion" name="funcion" value="{{ $privilegio->funcion }}" required>
+                        <input type="text" class="form-control" id="funcion" name="funcion" value="{{ $privilegio->funcionalidad }}" required>
                     </div>
                     <div class="form-group">
                         <div class="form-check">

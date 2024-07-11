@@ -82,8 +82,9 @@
     detalleMenuModal.addEventListener('show.bs.modal', function (event) {
         var button = event.relatedTarget;
         var menuId = button.getAttribute('data-menu-id');
+        var detallesUrl = "{{ route('menus.detalles', ':id') }}".replace(':id', menuId);
 
-        fetch('/menus/' + menuId + '/detalles')
+        fetch(detallesUrl) // Ajusta la ruta según tu configuración
             .then(response => response.text())
             .then(html => {
                 document.getElementById('detalleMenuModalBody').innerHTML = html;

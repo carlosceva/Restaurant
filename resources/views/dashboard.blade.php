@@ -49,7 +49,8 @@
         <a href="{{ route('dashboard')}}" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>       
+        <a href="#" class="nav-link">Contact</a> 
+             
       </li>
     </ul>
 
@@ -127,9 +128,8 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                     
-          <li class="nav-item">
-            
-          
+          <li class="nav-item">  
+          @if(array_filter(auth()->user()->rol->privilegios->toArray(), function($v, $k) {return in_array($v['funcionalidad'], ['Administracion']) && $v['estado'] === 'a';}, ARRAY_FILTER_USE_BOTH))
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
@@ -137,7 +137,7 @@
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
-           
+          @endif 
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="{{route('usuario.index')}}" class="nav-link">
@@ -173,6 +173,7 @@
           </li>
 
           <li class="nav-item">
+          @if(array_filter(auth()->user()->rol->privilegios->toArray(), function($v, $k) {return in_array($v['funcionalidad'], ['Cliente', 'Venta', 'Pago', 'Promocion', 'Servicio'])&& $v['estado'] === 'a';}, ARRAY_FILTER_USE_BOTH))
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-chart-pie"></i>
               <p>
@@ -180,41 +181,53 @@
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
+          @endif
             <ul class="nav nav-treeview">
+            @if(array_filter(auth()->user()->rol->privilegios->toArray(), function($v, $k) {return in_array($v['funcionalidad'], ['Cliente'])&& $v['estado'] === 'a' && $v['modificar'];}, ARRAY_FILTER_USE_BOTH))
               <li class="nav-item">
                 <a href="{{route('cliente.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Gestionar Cliente</p>
                 </a>
               </li>
+            @endif
+            @if(array_filter(auth()->user()->rol->privilegios->toArray(), function($v, $k) {return in_array($v['funcionalidad'], ['Venta'])&& $v['estado'] === 'a';}, ARRAY_FILTER_USE_BOTH))
               <li class="nav-item">
                 <a href="{{route('venta.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Gestionar Venta</p>
                 </a>
               </li>
+            @endif
+            @if(array_filter(auth()->user()->rol->privilegios->toArray(), function($v, $k) {return in_array($v['funcionalidad'], ['Pago'])&& $v['estado'] === 'a';}, ARRAY_FILTER_USE_BOTH))
               <li class="nav-item">
                 <a href="{{route('pago.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Gestionar Pago</p>
                 </a>
               </li>
+              @endif
+              @if(array_filter(auth()->user()->rol->privilegios->toArray(), function($v, $k) {return in_array($v['funcionalidad'], ['Promocion'])&& $v['estado'] === 'a';}, ARRAY_FILTER_USE_BOTH))
               <li class="nav-item">
                 <a href="{{route('promocion.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Gestionar Promocion</p>
                 </a>
               </li>
+              @endif
+              @if(array_filter(auth()->user()->rol->privilegios->toArray(), function($v, $k) {return in_array($v['funcionalidad'], ['Servicio'])&& $v['estado'] === 'a';}, ARRAY_FILTER_USE_BOTH))
               <li class="nav-item">
                 <a href="{{route('servicio.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Gestionar Servicio</p>
                 </a>
               </li>
+              @endif
             </ul>
           </li>
 
           <li class="nav-item">
+          @if(array_filter(auth()->user()->rol->privilegios->toArray(), function($v, $k) {return in_array($v['funcionalidad'], ['Menu','Producto','Categoria'])&& $v['estado'] === 'a';}, ARRAY_FILTER_USE_BOTH))
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tree"></i>
               <p>
@@ -222,29 +235,37 @@
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
+          @endif  
             <ul class="nav nav-treeview">
+            @if(array_filter(auth()->user()->rol->privilegios->toArray(), function($v, $k) {return in_array($v['funcionalidad'], ['Producto'])&& $v['estado'] === 'a';}, ARRAY_FILTER_USE_BOTH))
               <li class="nav-item">
                 <a href="{{route('producto.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Gestionar Producto</p>
                 </a>
               </li>
+              @endif
+              @if(array_filter(auth()->user()->rol->privilegios->toArray(), function($v, $k) {return in_array($v['funcionalidad'], ['Menu'])&& $v['estado'] === 'a';}, ARRAY_FILTER_USE_BOTH))
               <li class="nav-item">
                 <a href="{{route('menu.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Gestionar Menu</p>
                 </a>
               </li>
+              @endif
+              @if(array_filter(auth()->user()->rol->privilegios->toArray(), function($v, $k) {return in_array($v['funcionalidad'], ['Categoria'])&& $v['estado'] === 'a';}, ARRAY_FILTER_USE_BOTH))
               <li class="nav-item">
                 <a href="{{route('categoria.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Gestionar Categoria</p>
                 </a>
               </li>
+              @endif
             </ul>
           </li>
           
           <li class="nav-item">
+          @if(array_filter(auth()->user()->rol->privilegios->toArray(), function($v, $k) {return in_array($v['funcionalidad'], ['Reportes']) && $v['estado'] === 'a';}, ARRAY_FILTER_USE_BOTH))
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tree"></i>
               <p>
@@ -252,6 +273,7 @@
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
+          @endif
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="{{route('estadisticas.index')}}" class="nav-link">
