@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Contador;
 use App\Models\Usuario;
 use App\Models\Venta;
+use DateTime;
 
 
 class ReporteController extends Controller
@@ -31,17 +32,39 @@ class ReporteController extends Controller
         $cantidadVisitas = DB::table('contadors')
             ->sum('visitas');
 
-        $ventasMes = DB::select("select date_part('month', TO_DATE(fecha, 'yyyy-mm-dd')) as mes, count(*) as cantidad from ventas group by mes order by mes asc");
+        $ventasMes = DB::select("select date_part('month', TO_DATE(fecha, 'yyyy-mm-dd')) as mes, count(*) as cantidad from ventas where estado='a' group by mes order by mes asc");
 
         $mes =[];
         $cantidad = [];
         foreach($ventasMes as $item ){
-            array_push($mes, $item->mes);
+            $fecha = DateTime::createFromFormat('!m', $item->mes);
+            array_push($mes, $fecha->format('F'));
             array_push($cantidad, $item->cantidad);
         };
-        //dd($mes, $cantidad);   
+        //dd($mes, $cantidad);
+        
+        $ventasDia = DB::select("select TO_CHAR(TO_DATE(fecha, 'yyyy-mm-dd'), 'YYYY-MM-DD') as dia, count(*) as cantidad from ventas where estado='a' group by dia order by dia asc");
 
-        return view('Reportes.index', compact('cantidadVentas','cantidadVendida','cantidadClientes','cantidadVisitas','mes','cantidad'));
+        $dias = [];
+        $cantidadDias = [];
+        foreach($ventasDia as $item) {
+            array_push($dias, $item->dia);
+            array_push($cantidadDias, $item->cantidad);
+        }
+        //dd($dias, $cantidadDias);
+
+        $productosTop = DB::select("
+            SELECT p.nombre AS producto, SUM(dv.cantidad) AS total_vendido
+            FROM productos p
+            INNER JOIN detalle_ventas dv ON p.id = dv.id_producto
+            INNER JOIN ventas v ON dv.id_venta = v.id
+            WHERE v.estado = 'a'
+            GROUP BY p.id, p.nombre
+            ORDER BY total_vendido DESC
+            LIMIT 5
+        ");
+
+        return view('Reportes.index', compact('cantidadVentas','cantidadVendida','cantidadClientes','cantidadVisitas','mes','cantidad','dias','cantidadDias','productosTop'));
     
     }
 
@@ -96,8 +119,33 @@ class ReporteController extends Controller
     public function buscador(Request $r)
     {
         //dd($r->buscar);
+        $rutaTecno = 'http://127.0.0.1:8000/';
+        $rutaTecnos = 'http://mail.tecnoweb.org.bo/inf513/grupo12sc/Restaurant/public/';
+
         $search = strtolower($r->buscar);
-        $data = DB::select("select 'http://127.0.0.1:8000/producto' as ruta, nombre, 'productos' as modelo from productos where lower(nombre) like '%". $search."%' union all select 'http://127.0.0.1:8000/cliente' as ruta, nombre, 'clientes' as modelo from clientes where lower(nombre) like '%". $search."%'");
+        $tablas = [
+            ['productos', 'nombre', 'producto'],
+            ['clientes', 'nombre', 'cliente'],
+            ['categorias', 'nombre', 'categoria'],
+            ['promocions', 'fecha_i', 'promocion'],
+            ['menus', 'descripcion', 'menu'],
+            ['roles', 'nombre', 'rol'],
+            ['servicios', 'descripcion', 'servicio'],
+            ['privilegios', 'funcionalidad', 'privilegio'],
+            ['users', 'email', 'usuario'],
+            ['empleados', 'nombre', 'empleado'],
+            ['ventas', 'fecha', 'venta'],
+            ['pagos', 'metodo_pago', 'pago'],
+        ];
+
+        $data = [];
+        foreach ($tablas as $tabla) {
+            $resultados = DB::table($tabla[0])
+                ->select(DB::raw("'$rutaTecno$tabla[2]' as ruta, $tabla[1] as nombre, '$tabla[0]' as modelo"))
+                ->whereRaw("lower($tabla[1]) like ?", ["%$search%"])
+                ->get();
+            $data = array_merge($data, $resultados->toArray());
+        }
         return view('Estadisticas.index',compact('data'));
     }
 
