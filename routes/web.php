@@ -23,9 +23,7 @@ Route::get('/', function () {
     return view('principal');
 });
 
-Route::get('/dashboard', function () {
-    return view('estadisticas');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [ReporteController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -135,6 +133,7 @@ Route::get('ventas/{venta}/detalles', [VentaController::class, 'detalles'])->nam
 Route::get('/menus/{menu}/detalles', [MenuController::class, 'detalles'])->name('menus.detalles');
 
 Route::resource('/reportes', ReporteController::class)->names(['index' => 'reportes.index',]);
+Route::post('/reportes', [ReporteController::class, 'buscador'])->name('reportes.buscar');
 Route::get('/estadisticas', [ReporteController::class, 'estadisticas'])->name('estadisticas.index');
 
 });

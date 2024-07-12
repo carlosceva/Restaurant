@@ -62,13 +62,16 @@
           <i class="fas fa-search"></i>
         </a>
         <div class="navbar-search-block">
-          <form class="form-inline">
+          <form class="form-inline" action="{{route('reportes.buscar')}}" method="POST">
             <div class="input-group input-group-sm">
-              <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+              @csrf
+              <input class="form-control form-control-navbar" type="search" name="buscar" placeholder="Search" aria-label="Search">
+              
               <div class="input-group-append">
-                <button class="btn btn-navbar" type="submit">
+                <button class="btn btn-navbar" type="submit" >
                   <i class="fas fa-search"></i>
                 </button>
+                
                 <button class="btn btn-navbar" type="button" data-widget="navbar-search">
                   <i class="fas fa-times"></i>
                 </button>
@@ -401,7 +404,6 @@
         $('#servicios').DataTable();
         $('#ventas').DataTable();
     </script>
-
 
 </body>
 </html>
