@@ -74,7 +74,7 @@
             </tbody>
         </table>
 
-        {{ $ventas->links() }} 
+        
 
         <div class="modal fade" id="detalleVentaModal" tabindex="-1" aria-labelledby="detalleVentaModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-scrollable">

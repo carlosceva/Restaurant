@@ -140,5 +140,6 @@ Route::get('/estadisticas', [ReporteController::class, 'estadisticas'])->name('e
 
 //vista para intrusos
 Route::get('/unauthorized', [EmpresaController::class, 'intruso'])->name('intruso');
+Route::get('/cargar-estilo/{estilo}', [ReporteController::class, 'cargarEstilo'])->name('cargarEstilo');
 
 require __DIR__.'/auth.php';

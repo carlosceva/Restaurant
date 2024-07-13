@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('estilo')->nullable();;
             $table->unsignedBigInteger('id_empresa');
             $table->unsignedBigInteger('id_rol');
             $table->string('estado')->default('a');

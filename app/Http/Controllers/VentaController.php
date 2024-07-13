@@ -34,7 +34,7 @@ class VentaController extends Controller
             $idCliente = $usuario->cliente->id; 
             $ventas = Venta::where('id_cliente', $idCliente)
                      ->where('estado', 'a')
-                     ->paginate(10);
+                     ->get();
         }
         //$ventas = Venta::with(['cliente', 'empleado', 'promocion', 'servicio', 'detalleVentas.producto'])->get();
         //return view('Venta.index', compact('ventas','num'));
@@ -43,13 +43,13 @@ class VentaController extends Controller
             $idEmpleado = $usuario->empleado->id; 
             $ventas = Venta::where('id_empleado', $idEmpleado)
                      ->where('estado', 'a')
-                     ->paginate(10);
+                     ->get();
         }
 
         if($usuario->rol->nombre == 'Administrador' ){
             
             $ventas = Venta::with(['cliente', 'empleado', 'promocion', 'servicio'])
-                        ->where('estado', 'a')->paginate(10);
+                        ->where('estado', 'a')->get();
         } 
         
         $clientes = Cliente::where('estado','a')->get();
@@ -123,8 +123,16 @@ class VentaController extends Controller
             ]);
         }
 
+        if ($venta->id_promocion) {
+            $promocion = Promocion::find($venta->id_promocion);
+            $descuento = $promocion->descuento;
+            $totalConDescuento = $total - ($total * ($descuento / 100));
+        } else {
+            $totalConDescuento = $total;
+        }
+
         // Actualizar el total de la venta
-        $venta->update(['total' => $total]);
+        $venta->update(['total' => $totalConDescuento]);
 
         return redirect()->route('venta.index');
     }
@@ -174,30 +182,43 @@ class VentaController extends Controller
     public function detalles(Venta $venta)
     {
         $html = '<div class="container">';
-        $html .= '<h2>Venta #' . $venta->id . '</h2>';
-        $html .= '<p>Cliente: ' . $venta->cliente->nombre . '</p>';
-        $html .= '<p>Empleado: ' . $venta->empleado->nombre . '</p>';
-        $html .= '<p>Fecha: ' . $venta->fecha . '</p>';
+    $html .= '<h2>Venta #' . $venta->id . '</h2>';
+    $html .= '<p>Cliente: ' . $venta->cliente->nombre . '</p>';
+    $html .= '<p>Empleado: ' . $venta->empleado->nombre . '</p>';
+    $html .= '<p>Fecha: ' . $venta->fecha . '</p>';
 
-        $html .= '<h3>Detalles de Venta:</h3>';
-        $html .= '<table class="table">';
-        $html .= '<thead><tr><th>Producto</th><th>P/U</th><th>Cant</th><th>Subtotal</th></tr></thead>';
-        $html .= '<tbody>';
-        foreach ($venta->detalleVentas as $detalle) {
-            $precioUnitario = $detalle->producto->precio;
-            $subtotal = $detalle->cantidad * $precioUnitario;
-            $html .= '<tr>';
-            $html .= '<td>' . $detalle->producto->nombre . '</td>';
-            $html .= '<td>' . number_format($precioUnitario, 2) . '</td>';
-            $html .= '<td>' . $detalle->cantidad . '</td>';
-            $html .= '<td>' . number_format($subtotal, 2) . '</td>';
-            $html .= '</tr>';
-        }
-        $html .= '</tbody></table>';
+    $html .= '<h3>Detalles de Venta:</h3>';
+    $html .= '<table class="table">';
+    $html .= '<thead><tr><th>Producto</th><th>P/U</th><th>Cant</th><th>Subtotal</th></tr></thead>';
+    $html .= '<tbody>';
+    $totalSinDescuento = 0;
+    foreach ($venta->detalleVentas as $detalle) {
+        $precioUnitario = $detalle->producto->precio;
+        $subtotal = $detalle->cantidad * $precioUnitario;
+        $totalSinDescuento += $subtotal;
+        $html .= '<tr>';
+        $html .= '<td>' . $detalle->producto->nombre . '</td>';
+        $html .= '<td>' . number_format($precioUnitario, 2) . '</td>';
+        $html .= '<td>' . $detalle->cantidad . '</td>';
+        $html .= '<td>' . number_format($subtotal, 2) . '</td>';
+        $html .= '</tr>';
+    }
+    $html .= '</tbody></table>';
 
-        $html .= '<h2><p>Total: ' . $venta->total . '</p></h2></div>';
+    // Calcular descuento aplicado si existe
+    if ($venta->promocion) {
+        $descuento = $venta->promocion->descuento;
+        $montoDescuento = $totalSinDescuento * ($descuento / 100);
+        $totalConDescuento = $totalSinDescuento - $montoDescuento;
+        $html .= '<p>Descuento aplicado: ' . $descuento . '%</p>';
+        $html .= '<p>Monto de descuento: ' . number_format($montoDescuento, 2) . '</p>';
+    } else {
+        $totalConDescuento = $totalSinDescuento;
+    }
 
-        return $html;
+    $html .= '<h2><p>Total: ' . number_format($totalConDescuento, 2) . '</p></h2></div>';
+
+    return $html;
     }
 
 }

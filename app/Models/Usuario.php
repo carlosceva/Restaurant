@@ -12,7 +12,7 @@ class Usuario extends Model
     protected $primaryKey = 'id';
     public $timestamps = true;
     
-    protected $fillable = ['email','password','id_rol','id_empresa','estado'];
+    protected $fillable = ['email','password','id_rol','id_empresa','estado', 'estilo'];
 
     public function rol()
     {

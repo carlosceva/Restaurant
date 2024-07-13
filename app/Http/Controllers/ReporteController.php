@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Contador;
 use App\Models\Usuario;
 use App\Models\Venta;
+use App\Models\User;
 use DateTime;
 
 
@@ -136,6 +137,8 @@ class ReporteController extends Controller
             ['empleados', 'nombre', 'empleado'],
             ['ventas', 'fecha', 'venta'],
             ['pagos', 'metodo_pago', 'pago'],
+            ['productos','descripcion','producto'],
+            ['clientes','direccion','cliente'],
         ];
 
         $data = [];
@@ -154,5 +157,14 @@ class ReporteController extends Controller
             $datos = Contador::select('nombre', 'visitas')->orderBy('id','asc')->get();
 
         return view('Estadisticas.resultado',compact('datos'));
+    }
+
+    public function cargarEstilo($id){
+        $usuario=auth()->user()->id;
+        
+        $usuario2 = User::find($usuario);
+        $usuario2->estilo=$id;
+        $usuario2->update();
+        return redirect()->back();
     }
 }

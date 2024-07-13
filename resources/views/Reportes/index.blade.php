@@ -3,6 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content')
+@if(auth()->user()->rol->id === 1)
 <section class="content">
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
@@ -179,4 +180,5 @@
         });
     });
 </script>
+@endif
 @endsection

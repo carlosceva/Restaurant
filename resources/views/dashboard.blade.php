@@ -30,7 +30,60 @@
   <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
   
 </head>
-<body class="hold-transition sidebar-mini layout-fixed">
+
+<script>
+        function cambiarFondo(){
+          console.log("jaja sapee")
+            document.body.className='fondo'+{{auth()->user()->estilo}};
+            
+            if( {{auth()->user()->estilo}} ==1){
+              console.log("Estilo 1 papurri")
+            var hoja = document.createElement('style');
+            hoja.innerHTML = ".sidebar{background-color: #455279 !important;} " 
+            + ".main-sidebar{background: #455279 !important;}"
+            + ".nav-item p{color: #FFFF !important;}"
+            + ".form-inline input{background: #455279 !important;}"
+            + ".content-wrapper {background: #3C486C !important;}"
+            + ".card {background: #5C6C9C !important;color: #FFFF !important;}"
+            + ".main-header {background: #41507D !important;color: #FFFF !important;}"
+            + ".main-header a{background: #41507D !important;color: #FFFF !important;}"
+            document.body.appendChild(hoja);
+            } 
+            if( {{auth()->user()->estilo}} ==2){
+              console.log("Estilo 2 papurri")
+            var hoja = document.createElement('style');
+            hoja.innerHTML = ".sidebar{background-color: #FFFFFF !important;} " 
+            + ".main-sidebar{background: #FFFFFF !important;}"
+            + ".nav-item p{color: #404040 !important;}"
+            + ".form-inline input{background: #FFFFFF !important;}"
+            document.body.appendChild(hoja);
+            }
+            if( {{auth()->user()->estilo}} ==3){
+              console.log("Estilo 3 papurri")
+            var hoja = document.createElement('style');
+            hoja.innerHTML = ".sidebar{background-color: #E7F37D !important;} " 
+            + ".main-sidebar{background: #E7F37D !important;}"
+            + ".nav-item p{color: #F3513B !important;}"
+            + ".form-inline input{background: #E7F37D !important;}"
+            + ".content-wrapper {background: #EC7C3C !important;}"
+            + ".card {background: #3CD4EC !important;color: #FFFF !important;}"
+            + ".main-header {background: #F3513B !important;color: #E7F37D !important;}"
+            + ".main-header a{background: #F3513B !important;color: #E7F37D !important;}"
+            document.body.appendChild(hoja);
+            }
+            if( {{auth()->user()->estilo}} ==4){
+              console.log("Estilo 4 papurri")
+            var hoja = document.createElement('style');
+            hoja.innerHTML = ".content-wrapper {background-color: #77818C !important;}"
+            + ".card {background: #51575D !important;color: #FFFF !important;}"
+            + ".main-header {background: #343a40 !important;color: #FFFF !important;}"
+            + ".main-header a{background: #343a40 !important;color: #FFFF !important;}"
+            document.body.appendChild(hoja);
+            }
+        }
+    </script>
+
+<body class="hold-transition sidebar-mini layout-fixed" onload="cambiarFondo()">
 <div class="wrapper">
 
   <!-- Preloader -->
@@ -99,6 +152,15 @@
               </form>
           </div>
       </div>
+      <li class="dropdown">
+          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Estilos<span class="caret"></span></a>
+          <ul class="dropdown-menu" >
+          <li><a id="" href="{{ route('cargarEstilo', ['estilo' => '1']) }}" class="estilo1 dropdown-item">Azul</a></li>
+          <li><a id="" href="{{ route('cargarEstilo', ['estilo' => '2']) }}" class="estilo1 dropdown-item">Claro</a></li>
+          <li><a id="" href="{{ route('cargarEstilo', ['estilo' => '3']) }}" class="estilo1 dropdown-item">Infantil</a></li>
+          <li><a id="" href="{{ route('cargarEstilo', ['estilo' => '4']) }}" class="estilo1 dropdown-item">Dark</a></li>
+          </ul>
+      </li>
       </li>
       <li class="nav-item">
         <a class="nav-link" data-widget="fullscreen" href="#" role="button">
@@ -404,7 +466,7 @@
         $('#servicios').DataTable();
         $('#ventas').DataTable();
     </script>
-
+    
 </body>
 </html>
 
