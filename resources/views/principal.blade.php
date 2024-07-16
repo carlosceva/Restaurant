@@ -93,7 +93,7 @@
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
 
-        <a class="btn-book-a-table d-none d-xl-block" href="#book-a-table">Book a Table</a>
+        
 
       </div>
 
@@ -114,8 +114,8 @@
             <h2 data-aos="fade-up" data-aos-delay="100">Bienvenido a <span>Restaurante La "Ñ"</span></h2>
             <p data-aos="fade-up" data-aos-delay="200">¡Ofreciendo excelente comida durante más de 18 años!</p>
             <div class="d-flex mt-4" data-aos="fade-up" data-aos-delay="300">
-              <a href="#menu" class="cta-btn">Our Menu</a>
-              <a href="#book-a-table" class="cta-btn">Book a Table</a>
+              <a href="#menu" class="cta-btn">Nuestro Menu</a>
+              
             </div>
           </div>
           <div class="col-lg-4 d-flex align-items-center justify-content-center mt-5 mt-lg-0">
@@ -136,19 +136,17 @@
             <img src="assets/img/about.jpg" class="img-fluid about-img" alt="">
           </div>
           <div class="col-lg-6 order-2 order-lg-1 content">
-            <h3>Voluptatem dignissimos provident</h3>
+            <h3>Sabores Auténticos de España</h3>
             <p class="fst-italic">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
+              Sumérgete en la rica tradición culinaria española, donde cada plato es una obra maestra de sabor y pasión.
             </p>
             <ul>
-              <li><i class="bi bi-check2-all"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></li>
-              <li><i class="bi bi-check2-all"></i> <span>Duis aute irure dolor in reprehenderit in voluptate velit.</span></li>
-              <li><i class="bi bi-check2-all"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</span></li>
+              <li><i class="bi bi-check2-all"></i> <span>Degusta nuestras tapas, una explosión de sabores en cada bocado.</span></li>
+              <li><i class="bi bi-check2-all"></i> <span>Deléitate con nuestras paellas, un clásico que te transportará a las costas mediterráneas.</span></li>
+              <li><i class="bi bi-check2-all"></i> <span>Descubre la magia de nuestros platos de mariscos frescos, traídos directamente del mar a tu mesa.</span></li>
             </ul>
             <p>
-              Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident
+              Acompáñanos en un viaje gastronómico por España, donde cada ingrediente cuenta una historia y cada plato es una experiencia inolvidable. ¡Reserva tu mesa ahora y déjate seducir por la auténtica cocina española!
             </p>
           </div>
         </div>
@@ -162,41 +160,41 @@
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>WHY US</h2>
-        <p>Why Choose Our Restaurant</p>
-      </div><!-- End Section Title -->
+    <h2>¿POR QUÉ ELEGIRNOS?</h2>
+    <p>Las razones para elegir nuestro restaurante</p>
+</div><!-- End Section Title -->
 
-      <div class="container">
+<div class="container">
 
-        <div class="row gy-4">
+    <div class="row gy-4">
 
-          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
             <div class="card-item">
-              <span>01</span>
-              <h4><a href="" class="stretched-link">Lorem Ipsum</a></h4>
-              <p>Ulamco laboris nisi ut aliquip ex ea commodo consequat. Et consectetur ducimus vero placeat</p>
+                <span>01</span>
+                <h4><a href="" class="stretched-link">Ingredientes Frescos</a></h4>
+                <p>Utilizamos solo los ingredientes más frescos y de la mejor calidad para ofrecerte platos excepcionales.</p>
             </div>
-          </div><!-- Card Item -->
+        </div><!-- Card Item -->
 
-          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
             <div class="card-item">
-              <span>02</span>
-              <h4><a href="" class="stretched-link">Repellat Nihil</a></h4>
-              <p>Dolorem est fugiat occaecati voluptate velit esse. Dicta veritatis dolor quod et vel dire leno para dest</p>
+                <span>02</span>
+                <h4><a href="" class="stretched-link">Tradición y Sabor</a></h4>
+                <p>Cada plato está elaborado siguiendo las recetas tradicionales españolas, garantizando un sabor auténtico.</p>
             </div>
-          </div><!-- Card Item -->
+        </div><!-- Card Item -->
 
-          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
+        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
             <div class="card-item">
-              <span>03</span>
-              <h4><a href="" class="stretched-link">Ad ad velit qui</a></h4>
-              <p>Molestiae officiis omnis illo asperiores. Aut doloribus vitae sunt debitis quo vel nam quis</p>
+                <span>03</span>
+                <h4><a href="" class="stretched-link">Atención Personalizada</a></h4>
+                <p>Nuestro equipo se dedica a brindarte una experiencia memorable, con un servicio atento y cordial.</p>
             </div>
-          </div><!-- Card Item -->
+        </div><!-- Card Item -->
 
-        </div>
+    </div>
 
-      </div>
+</div>
 
     </section><!-- /Why Us Section -->
 
@@ -205,118 +203,119 @@
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Menu</h2>
-        <p>Check Our Tasty Menu</p>
-      </div><!-- End Section Title -->
+    <h2>MENÚ</h2>
+    <p>Descubre nuestro delicioso menú</p>
+</div><!-- End Section Title -->
 
-      <div class="container isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
+<div class="container isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
 
-        <div class="row" data-aos="fade-up" data-aos-delay="100">
-          <div class="col-lg-12 d-flex justify-content-center">
+    <div class="row" data-aos="fade-up" data-aos-delay="100">
+        <div class="col-lg-12 d-flex justify-content-center">
             <ul class="menu-filters isotope-filters">
-              <li data-filter="*" class="filter-active">All</li>
-              <li data-filter=".filter-starters">Starters</li>
-              <li data-filter=".filter-salads">Salads</li>
-              <li data-filter=".filter-specialty">Specialty</li>
+                <li data-filter="*" class="filter-active">Todo</li>
+                <li data-filter=".filter-starters">Entrantes</li>
+                <li data-filter=".filter-salads">Ensaladas</li>
+                <li data-filter=".filter-specialty">Especialidades</li>
             </ul>
-          </div>
-        </div><!-- Menu Filters -->
+        </div>
+    </div><!-- Menu Filters -->
 
-        <div class="row isotope-container" data-aos="fade-up" data-aos-delay="200">
+    <div class="row isotope-container" data-aos="fade-up" data-aos-delay="200">
 
-          <div class="col-lg-6 menu-item isotope-item filter-starters">
+        <div class="col-lg-6 menu-item isotope-item filter-starters">
             <img src="assets/img/menu/lobster-bisque.jpg" class="menu-img" alt="">
             <div class="menu-content">
-              <a href="#">Lobster Bisque</a><span>$5.95</span>
+                <a href="#">Crema de Langosta</a><span>$5.95</span>
             </div>
             <div class="menu-ingredients">
-              Lorem, deren, trataro, filede, nerada
+                Suave crema de langosta con un toque especial.
             </div>
-          </div><!-- Menu Item -->
+        </div><!-- Menu Item -->
 
-          <div class="col-lg-6 menu-item isotope-item filter-specialty">
+        <div class="col-lg-6 menu-item isotope-item filter-specialty">
             <img src="assets/img/menu/bread-barrel.jpg" class="menu-img" alt="">
             <div class="menu-content">
-              <a href="#">Bread Barrel</a><span>$6.95</span>
+                <a href="#">Pan Artesanal</a><span>$6.95</span>
             </div>
             <div class="menu-ingredients">
-              Lorem, deren, trataro, filede, nerada
+                Pan fresco hecho en casa, ideal para acompañar.
             </div>
-          </div><!-- Menu Item -->
+        </div><!-- Menu Item -->
 
-          <div class="col-lg-6 menu-item isotope-item filter-starters">
+        <div class="col-lg-6 menu-item isotope-item filter-starters">
             <img src="assets/img/menu/cake.jpg" class="menu-img" alt="">
             <div class="menu-content">
-              <a href="#">Crab Cake</a><span>$7.95</span>
+                <a href="#">Tortita de Cangrejo</a><span>$7.95</span>
             </div>
             <div class="menu-ingredients">
-              A delicate crab cake served on a toasted roll with lettuce and tartar sauce
+                Delicada tortita de cangrejo servida en pan tostado con lechuga y salsa tártara.
             </div>
-          </div><!-- Menu Item -->
+        </div><!-- Menu Item -->
 
-          <div class="col-lg-6 menu-item isotope-item filter-salads">
+        <div class="col-lg-6 menu-item isotope-item filter-salads">
             <img src="assets/img/menu/caesar.jpg" class="menu-img" alt="">
             <div class="menu-content">
-              <a href="#">Caesar Selections</a><span>$8.95</span>
+                <a href="#">Ensalada César</a><span>$8.95</span>
             </div>
             <div class="menu-ingredients">
-              Lorem, deren, trataro, filede, nerada
+                Ensalada clásica con lechuga romana, crutones y aderezo César.
             </div>
-          </div><!-- Menu Item -->
+        </div><!-- Menu Item -->
 
-          <div class="col-lg-6 menu-item isotope-item filter-specialty">
+        <div class="col-lg-6 menu-item isotope-item filter-specialty">
             <img src="assets/img/menu/tuscan-grilled.jpg" class="menu-img" alt="">
             <div class="menu-content">
-              <a href="#">Tuscan Grilled</a><span>$9.95</span>
+                <a href="#">Pollo a la Toscana</a><span>$9.95</span>
             </div>
             <div class="menu-ingredients">
-              Grilled chicken with provolone, artichoke hearts, and roasted red pesto
+                Pollo a la parrilla con provolone, corazones de alcachofa y pesto asado.
             </div>
-          </div><!-- Menu Item -->
+        </div><!-- Menu Item -->
 
-          <div class="col-lg-6 menu-item isotope-item filter-starters">
+        <div class="col-lg-6 menu-item isotope-item filter-starters">
             <img src="assets/img/menu/mozzarella.jpg" class="menu-img" alt="">
             <div class="menu-content">
-              <a href="#">Mozzarella Stick</a><span>$4.95</span>
+                <a href="#">Palitos de Mozzarella</a><span>$4.95</span>
             </div>
             <div class="menu-ingredients">
-              Lorem, deren, trataro, filede, nerada
+                Crujientes palitos de mozzarella, perfectos para compartir.
             </div>
-          </div><!-- Menu Item -->
+        </div><!-- Menu Item -->
 
-          <div class="col-lg-6 menu-item isotope-item filter-salads">
+        <div class="col-lg-6 menu-item isotope-item filter-salads">
             <img src="assets/img/menu/greek-salad.jpg" class="menu-img" alt="">
             <div class="menu-content">
-              <a href="#">Greek Salad</a><span>$9.95</span>
+                <a href="#">Ensalada Griega</a><span>$9.95</span>
             </div>
             <div class="menu-ingredients">
-              Fresh spinach, crisp romaine, tomatoes, and Greek olives
+                Espinacas frescas, lechuga crujiente, tomates y aceitunas griegas.
             </div>
-          </div><!-- Menu Item -->
+        </div><!-- Menu Item -->
 
-          <div class="col-lg-6 menu-item isotope-item filter-salads">
+        <div class="col-lg-6 menu-item isotope-item filter-salads">
             <img src="assets/img/menu/spinach-salad.jpg" class="menu-img" alt="">
             <div class="menu-content">
-              <a href="#">Spinach Salad</a><span>$9.95</span>
+                <a href="#">Ensalada de Espinacas</a><span>$9.95</span>
             </div>
             <div class="menu-ingredients">
-              Fresh spinach with mushrooms, hard boiled egg, and warm bacon vinaigrette
+                Espinacas frescas con champiñones, huevo duro y vinagreta de tocino caliente.
             </div>
-          </div><!-- Menu Item -->
+        </div><!-- Menu Item -->
 
-          <div class="col-lg-6 menu-item isotope-item filter-specialty">
+        <div class="col-lg-6 menu-item isotope-item filter-specialty">
             <img src="assets/img/menu/lobster-roll.jpg" class="menu-img" alt="">
             <div class="menu-content">
-              <a href="#">Lobster Roll</a><span>$12.95</span>
+                <a href="#">Rollito de Langosta</a><span>$12.95</span>
             </div>
             <div class="menu-ingredients">
-              Plump lobster meat, mayo and crisp lettuce on a toasted bulky roll
+                Jugosa carne de langosta con mayonesa y lechuga en un pan tostado.
             </div>
-          </div><!-- Menu Item -->
+        </div><!-- Menu Item -->
 
-        </div><!-- Menu Container -->
+    </div><!-- Menu Container -->
 
-      </div>
+</div>
+
 
     </section><!-- /Menu Section -->
 
@@ -325,99 +324,100 @@
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Specials</h2>
-        <p>Check Our Specials</p>
-      </div><!-- End Section Title -->
+    <h2>OFERTAS ESPECIALES</h2>
+    <p>Descubre nuestras ofertas especiales</p>
+</div><!-- End Section Title -->
 
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
+<div class="container" data-aos="fade-up" data-aos-delay="100">
 
-        <div class="row">
-          <div class="col-lg-3">
+    <div class="row">
+        <div class="col-lg-3">
             <ul class="nav nav-tabs flex-column">
-              <li class="nav-item">
-                <a class="nav-link active show" data-bs-toggle="tab" href="#specials-tab-1">Modi sit est</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="tab" href="#specials-tab-2">Unde praesentium sed</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="tab" href="#specials-tab-3">Pariatur explicabo vel</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="tab" href="#specials-tab-4">Nostrum qui quasi</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="tab" href="#specials-tab-5">Iusto ut expedita aut</a>
-              </li>
+                <li class="nav-item">
+                    <a class="nav-link active show" data-bs-toggle="tab" href="#specials-tab-1">Plato del Día</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="tab" href="#specials-tab-2">Recomendaciones del Chef</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="tab" href="#specials-tab-3">Sabores de Temporada</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="tab" href="#specials-tab-4">Postres Especiales</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="tab" href="#specials-tab-5">Bebidas Destacadas</a>
+                </li>
             </ul>
-          </div>
-          <div class="col-lg-9 mt-4 mt-lg-0">
-            <div class="tab-content">
-              <div class="tab-pane active show" id="specials-tab-1">
-                <div class="row">
-                  <div class="col-lg-8 details order-2 order-lg-1">
-                    <h3>Architecto ut aperiam autem id</h3>
-                    <p class="fst-italic">Qui laudantium consequatur laborum sit qui ad sapiente dila parde sonata raqer a videna mareta paulona marka</p>
-                    <p>Et nobis maiores eius. Voluptatibus ut enim blanditiis atque harum sint. Laborum eos ipsum ipsa odit magni. Incidunt hic ut molestiae aut qui. Est repellat minima eveniet eius et quis magni nihil. Consequatur dolorem quaerat quos qui similique accusamus nostrum rem vero</p>
-                  </div>
-                  <div class="col-lg-4 text-center order-1 order-lg-2">
-                    <img src="assets/img/specials-1.png" alt="" class="img-fluid">
-                  </div>
-                </div>
-              </div>
-              <div class="tab-pane" id="specials-tab-2">
-                <div class="row">
-                  <div class="col-lg-8 details order-2 order-lg-1">
-                    <h3>Et blanditiis nemo veritatis excepturi</h3>
-                    <p class="fst-italic">Qui laudantium consequatur laborum sit qui ad sapiente dila parde sonata raqer a videna mareta paulona marka</p>
-                    <p>Ea ipsum voluptatem consequatur quis est. Illum error ullam omnis quia et reiciendis sunt sunt est. Non aliquid repellendus itaque accusamus eius et velit ipsa voluptates. Optio nesciunt eaque beatae accusamus lerode pakto madirna desera vafle de nideran pal</p>
-                  </div>
-                  <div class="col-lg-4 text-center order-1 order-lg-2">
-                    <img src="assets/img/specials-2.png" alt="" class="img-fluid">
-                  </div>
-                </div>
-              </div>
-              <div class="tab-pane" id="specials-tab-3">
-                <div class="row">
-                  <div class="col-lg-8 details order-2 order-lg-1">
-                    <h3>Impedit facilis occaecati odio neque aperiam sit</h3>
-                    <p class="fst-italic">Eos voluptatibus quo. Odio similique illum id quidem non enim fuga. Qui natus non sunt dicta dolor et. In asperiores velit quaerat perferendis aut</p>
-                    <p>Iure officiis odit rerum. Harum sequi eum illum corrupti culpa veritatis quisquam. Neque necessitatibus illo rerum eum ut. Commodi ipsam minima molestiae sed laboriosam a iste odio. Earum odit nesciunt fugiat sit ullam. Soluta et harum voluptatem optio quae</p>
-                  </div>
-                  <div class="col-lg-4 text-center order-1 order-lg-2">
-                    <img src="assets/img/specials-3.png" alt="" class="img-fluid">
-                  </div>
-                </div>
-              </div>
-              <div class="tab-pane" id="specials-tab-4">
-                <div class="row">
-                  <div class="col-lg-8 details order-2 order-lg-1">
-                    <h3>Fuga dolores inventore laboriosam ut est accusamus laboriosam dolore</h3>
-                    <p class="fst-italic">Totam aperiam accusamus. Repellat consequuntur iure voluptas iure porro quis delectus</p>
-                    <p>Eaque consequuntur consequuntur libero expedita in voluptas. Nostrum ipsam necessitatibus aliquam fugiat debitis quis velit. Eum ex maxime error in consequatur corporis atque. Eligendi asperiores sed qui veritatis aperiam quia a laborum inventore</p>
-                  </div>
-                  <div class="col-lg-4 text-center order-1 order-lg-2">
-                    <img src="assets/img/specials-4.png" alt="" class="img-fluid">
-                  </div>
-                </div>
-              </div>
-              <div class="tab-pane" id="specials-tab-5">
-                <div class="row">
-                  <div class="col-lg-8 details order-2 order-lg-1">
-                    <h3>Est eveniet ipsam sindera pad rone matrelat sando reda</h3>
-                    <p class="fst-italic">Omnis blanditiis saepe eos autem qui sunt debitis porro quia.</p>
-                    <p>Exercitationem nostrum omnis. Ut reiciendis repudiandae minus. Omnis recusandae ut non quam ut quod eius qui. Ipsum quia odit vero atque qui quibusdam amet. Occaecati sed est sint aut vitae molestiae voluptate vel</p>
-                  </div>
-                  <div class="col-lg-4 text-center order-1 order-lg-2">
-                    <img src="assets/img/specials-5.png" alt="" class="img-fluid">
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
+        <div class="col-lg-9 mt-4 mt-lg-0">
+            <div class="tab-content">
+                <div class="tab-pane active show" id="specials-tab-1">
+                    <div class="row">
+                        <div class="col-lg-8 details order-2 order-lg-1">
+                            <h3>Plato del Día</h3>
+                            <p class="fst-italic">Una deliciosa selección de la cocina tradicional.</p>
+                            <p>Disfruta de una experiencia única con ingredientes frescos y locales, preparados con amor y dedicación.</p>
+                        </div>
+                        <div class="col-lg-4 text-center order-1 order-lg-2">
+                            <img src="assets/img/specials-1.png" alt="" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="specials-tab-2">
+                    <div class="row">
+                        <div class="col-lg-8 details order-2 order-lg-1">
+                            <h3>Recomendaciones del Chef</h3>
+                            <p class="fst-italic">Platos elaborados con ingredientes seleccionados.</p>
+                            <p>Sabores que deleitarán tu paladar, siempre buscando la perfección en cada bocado.</p>
+                        </div>
+                        <div class="col-lg-4 text-center order-1 order-lg-2">
+                            <img src="assets/img/specials-2.png" alt="" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="specials-tab-3">
+                    <div class="row">
+                        <div class="col-lg-8 details order-2 order-lg-1">
+                            <h3>Sabores de Temporada</h3>
+                            <p class="fst-italic">Platos que celebran la frescura de cada estación.</p>
+                            <p>Con ingredientes de temporada, garantizamos calidad y sabor en cada plato.</p>
+                        </div>
+                        <div class="col-lg-4 text-center order-1 order-lg-2">
+                            <img src="assets/img/specials-3.png" alt="" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="specials-tab-4">
+                    <div class="row">
+                        <div class="col-lg-8 details order-2 order-lg-1">
+                            <h3>Postres Especiales</h3>
+                            <p class="fst-italic">Delicias para cerrar con broche de oro.</p>
+                            <p>Nuestros postres son elaborados con recetas tradicionales que te harán querer repetir.</p>
+                        </div>
+                        <div class="col-lg-4 text-center order-1 order-lg-2">
+                            <img src="assets/img/specials-4.png" alt="" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="specials-tab-5">
+                    <div class="row">
+                        <div class="col-lg-8 details order-2 order-lg-1">
+                            <h3>Bebidas Destacadas</h3>
+                            <p class="fst-italic">Una selección de bebidas que complementan perfectamente tus comidas.</p>
+                            <p>Desde vinos locales hasta cócteles creativos, nuestra carta de bebidas te sorprenderá.</p>
+                        </div>
+                        <div class="col-lg-4 text-center order-1 order-lg-2">
+                            <img src="assets/img/specials-5.png" alt="" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-      </div>
+</div>
+
 
     </section><!-- /Specials Section -->
 
@@ -452,23 +452,21 @@
                   <img src="assets/img/events-slider/events-slider-1.jpg" class="img-fluid" alt="">
                 </div>
                 <div class="col-lg-6 pt-4 pt-lg-0 content">
-                  <h3>Birthday Parties</h3>
-                  <div class="price">
-                    <p><span>$189</span></p>
-                  </div>
-                  <p class="fst-italic">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                    magna aliqua.
-                  </p>
-                  <ul>
-                    <li><i class="bi bi-check2-circle"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></li>
-                    <li><i class="bi bi-check2-circle"></i> <span>Duis aute irure dolor in reprehenderit in voluptate velit.</span></li>
-                    <li><i class="bi bi-check2-circle"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></li>
-                  </ul>
-                  <p>
-                    Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                    velit esse cillum dolore eu fugiat nulla pariatur
-                  </p>
+                    <h3>Fiestas de Cumpleaños</h3>
+                    <div class="price">
+                        <p><span>$189</span></p>
+                    </div>
+                    <p class="fst-italic">
+                        Celebra tu cumpleaños con nosotros y disfruta de un día especial lleno de sorpresas.
+                    </p>
+                    <ul>
+                        <li><i class="bi bi-check2-circle"></i> <span>Menú personalizado para todos los gustos.</span></li>
+                        <li><i class="bi bi-check2-circle"></i> <span>Decoraciones temáticas según tus preferencias.</span></li>
+                        <li><i class="bi bi-check2-circle"></i> <span>Asistencia en la planificación de la celebración.</span></li>
+                    </ul>
+                    <p>
+                        Nos encargamos de cada detalle para que tu fiesta de cumpleaños sea inolvidable. ¡Déjanos crear momentos especiales para ti!
+                    </p>
                 </div>
               </div>
             </div><!-- End Slider item -->
@@ -479,24 +477,23 @@
                   <img src="assets/img/events-slider/events-slider-2.jpg" class="img-fluid" alt="">
                 </div>
                 <div class="col-lg-6 pt-4 pt-lg-0 content">
-                  <h3>Private Parties</h3>
+                  <h3>Fiestas Privadas</h3>
                   <div class="price">
-                    <p><span>$290</span></p>
+                      <p><span>$290</span></p>
                   </div>
                   <p class="fst-italic">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                    magna aliqua.
+                      Organiza tu evento con nosotros y disfruta de un servicio excepcional y un ambiente acogedor.
                   </p>
                   <ul>
-                    <li><i class="bi bi-check2-circle"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></li>
-                    <li><i class="bi bi-check2-circle"></i> <span>Duis aute irure dolor in reprehenderit in voluptate velit.</span></li>
-                    <li><i class="bi bi-check2-circle"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></li>
+                      <li><i class="bi bi-check2-circle"></i> <span>Servicio personalizado para cada evento.</span></li>
+                      <li><i class="bi bi-check2-circle"></i> <span>Opciones de menú adaptadas a tus necesidades.</span></li>
+                      <li><i class="bi bi-check2-circle"></i> <span>Espacio privado para grupos grandes.</span></li>
                   </ul>
                   <p>
-                    Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                    velit esse cillum dolore eu fugiat nulla pariatur
+                      Contamos con una amplia experiencia en la organización de eventos. Nuestro equipo se encargará de cada detalle para que tu celebración sea inolvidable.
                   </p>
-                </div>
+              </div>
+
               </div>
             </div><!-- End Slider item -->
 
@@ -506,24 +503,23 @@
                   <img src="assets/img/events-slider/events-slider-3.jpg" class="img-fluid" alt="">
                 </div>
                 <div class="col-lg-6 pt-4 pt-lg-0 content">
-                  <h3>Custom Parties</h3>
+                  <h3>Fiestas Personalizadas</h3>
                   <div class="price">
-                    <p><span>$99</span></p>
+                      <p><span>$99</span></p>
                   </div>
                   <p class="fst-italic">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                    magna aliqua.
+                      Organiza una celebración única adaptada a tus preferencias y necesidades.
                   </p>
                   <ul>
-                    <li><i class="bi bi-check2-circle"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></li>
-                    <li><i class="bi bi-check2-circle"></i> <span>Duis aute irure dolor in reprehenderit in voluptate velit.</span></li>
-                    <li><i class="bi bi-check2-circle"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></li>
+                      <li><i class="bi bi-check2-circle"></i> <span>Opciones de menú personalizadas para cada ocasión.</span></li>
+                      <li><i class="bi bi-check2-circle"></i> <span>Decoración y ambientación a tu gusto.</span></li>
+                      <li><i class="bi bi-check2-circle"></i> <span>Asesoramiento para planificar tu evento.</span></li>
                   </ul>
                   <p>
-                    Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                    velit esse cillum dolore eu fugiat nulla pariatur
+                      Nos encargamos de todos los detalles para que tu fiesta sea inolvidable. ¡Déjanos ayudarte a crear recuerdos especiales!
                   </p>
-                </div>
+              </div>
+
               </div>
             </div><!-- End Slider item -->
 
@@ -535,52 +531,7 @@
 
     </section><!-- /Events Section -->
 
-    <!-- Book A Table Section -->
-    <section id="book-a-table" class="book-a-table section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>RESERVATION</h2>
-        <p>Book a Table</p>
-      </div><!-- End Section Title -->
-
-      <div class="container">
-
-        <form action="forms/book-a-table.php" method="post" role="form" class="php-email-form">
-          <div class="row gy-4">
-            <div class="col-lg-4 col-md-6">
-              <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required="">
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required="">
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <input type="text" class="form-control" name="phone" id="phone" placeholder="Your Phone" required="">
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <input type="date" name="date" class="form-control" id="date" placeholder="Date" required="">
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <input type="time" class="form-control" name="time" id="time" placeholder="Time" required="">
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <input type="number" class="form-control" name="people" id="people" placeholder="# of people" required="">
-            </div>
-          </div>
-          <div class="form-group mt-3">
-            <textarea class="form-control" name="message" rows="5" placeholder="Message"></textarea>
-          </div>
-          <div class="mb-3">
-            <div class="loading">Loading</div>
-            <div class="error-message"></div>
-            <div class="sent-message">Your booking request was sent. We will call back or send an Email to confirm your reservation. Thank you!</div>
-          </div>
-          <div class="text-center"><button type="submit">Book a Table</button></div>
-        </form>
-
-      </div>
-
-    </section><!-- /Book A Table Section -->
+    
 
     <!-- Testimonials Section -->
     <section id="testimonials" class="testimonials section">
@@ -855,84 +806,54 @@
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Contact</h2>
-        <p>Contact Us</p>
+        <h2>Contacto</h2>
+        <p>Contactanos</p>
       </div><!-- End Section Title -->
 
       <div class="mb-5" data-aos="fade-up" data-aos-delay="200">
-        <iframe style="border:0; width: 100%; height: 400px;" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d48389.78314118045!2d-74.006138!3d40.710059!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a22a3bda30d%3A0xb89d1fe6bc499443!2sDowntown%20Conference%20Center!5e0!3m2!1sen!2sus!4v1676961268712!5m2!1sen!2sus" frameborder="0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <iframe style="border:0; width: 100%; height: 400px;" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3799.498590430507!2d-63.19942619651557!3d-17.768249552482462!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x93f1e7f9b986d12d%3A0xbe415f27ab01f1a9!2sCalle%20340%2C%20Santa%20Cruz%20de%20la%20Sierra!5e0!3m2!1ses!2sbo!4v1721156642990!5m2!1ses!2sbo" frameborder="0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div><!-- End Google Maps -->
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
         <div class="row gy-4">
 
-          <div class="col-lg-4">
+          <div class="col-lg-12">
             <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
               <i class="bi bi-geo-alt flex-shrink-0"></i>
               <div>
-                <h3>Location</h3>
-                <p>A108 Adam Street, New York, NY 535022</p>
+                <h3>Ubicación</h3>
+                <p>Calle 340, Santa Cruz de la Sierra</p>
               </div>
             </div><!-- End Info Item -->
 
             <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
               <i class="bi bi-telephone flex-shrink-0"></i>
               <div>
-                <h3>Open Hours</h3>
-                <p>Monday-Saturday:<br>11:00 AM - 2300 PM</p>
+                <h3>Horario de atención</h3>
+                <p>Lunes-Sábado:<br>11:00 AM - 11:00 PM</p>
               </div>
             </div><!-- End Info Item -->
 
             <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
               <i class="bi bi-telephone flex-shrink-0"></i>
               <div>
-                <h3>Call Us</h3>
-                <p>+1 5589 55488 55</p>
+                <h3>Llámanos</h3>
+                <p>+591 71044826</p>
               </div>
             </div><!-- End Info Item -->
 
             <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="500">
               <i class="bi bi-envelope flex-shrink-0"></i>
               <div>
-                <h3>Email Us</h3>
-                <p>info@example.com</p>
+                <h3>Envíanos un correo</h3>
+                <p>restaurantlaene@gmail.com</p>
               </div>
             </div><!-- End Info Item -->
 
           </div>
 
-          <div class="col-lg-8">
-            <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
-              <div class="row gy-4">
-
-                <div class="col-md-6">
-                  <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
-                </div>
-
-                <div class="col-md-6 ">
-                  <input type="email" class="form-control" name="email" placeholder="Your Email" required="">
-                </div>
-
-                <div class="col-md-12">
-                  <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
-                </div>
-
-                <div class="col-md-12">
-                  <textarea class="form-control" name="message" rows="6" placeholder="Message" required=""></textarea>
-                </div>
-
-                <div class="col-md-12 text-center">
-                  <div class="loading">Loading</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">Your message has been sent. Thank you!</div>
-
-                  <button type="submit">Send Message</button>
-                </div>
-
-              </div>
-            </form>
-          </div><!-- End Contact Form -->
+          
 
         </div>
 
@@ -948,18 +869,18 @@
       <div class="row gy-4">
         <div class="col-lg-4 col-md-6 footer-about">
           <a href="index.html" class="logo d-flex align-items-center">
-            <span class="sitename">Restaurantly</span>
+            <span class="sitename">Restaurante La Ñ</span>
           </a>
           <div class="footer-contact pt-3">
-            <p>A108 Adam Street</p>
-            <p>New York, NY 535022</p>
-            <p class="mt-3"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p>
-            <p><strong>Email:</strong> <span>info@example.com</span></p>
+            <p>Calle 340, Santa Cruz de la Sierra</p>
+            <p>Santa Cruz, SC 340</p>
+            <p class="mt-3"><strong>Telefono:</strong> <span>+591 71044826</span></p>
+            <p><strong>Email:</strong> <span>restaurantlaene@gmail.com</span></p>
           </div>
           <div class="social-links d-flex mt-4">
             <a href=""><i class="bi bi-twitter-x"></i></a>
-            <a href=""><i class="bi bi-facebook"></i></a>
-            <a href=""><i class="bi bi-instagram"></i></a>
+            <a href="https://www.facebook.com/lanrestobar"><i class="bi bi-facebook"></i></a>
+            <a href="https://www.instagram.com/lanrestobar"><i class="bi bi-instagram"></i></a>
             <a href=""><i class="bi bi-linkedin"></i></a>
           </div>
         </div>
@@ -1001,13 +922,13 @@
     </div>
 
     <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">Restaurantly</strong> <span>All Rights Reserved</span></p>
+      <p>© <span>Copyright</span> <strong class="px-1 sitename">Netcrow</strong> <span>All Rights Reserved</span></p>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->
         <!-- You can delete the links only if you've purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        Designed by <a href="https://bootstrapmade.com/">CevaSoft</a>
       </div>
     </div>
 

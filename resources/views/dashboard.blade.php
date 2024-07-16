@@ -159,6 +159,7 @@
           <li><a id="" href="{{ route('cargarEstilo', ['estilo' => '2']) }}" class="estilo1 dropdown-item">Claro</a></li>
           <li><a id="" href="{{ route('cargarEstilo', ['estilo' => '3']) }}" class="estilo1 dropdown-item">Infantil</a></li>
           <li><a id="" href="{{ route('cargarEstilo', ['estilo' => '4']) }}" class="estilo1 dropdown-item">Dark</a></li>
+          <li><a id="" href="{{ route('cargarEstilo', ['estilo' => '0']) }}" class="estilo1 dropdown-item">Por defecto</a></li>
           </ul>
       </li>
       </li>
@@ -347,7 +348,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="{{ route('dashboard')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Reporte de ventas</p>
                 </a>
