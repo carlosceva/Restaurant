@@ -120,7 +120,7 @@ class ReporteController extends Controller
     public function buscador(Request $r)
     {
         //dd($r->buscar);
-        $rutaTecno = 'http://127.0.0.1:8000/';
+        //$rutaTecno = 'http://127.0.0.1:8000/';
         $rutaTecnos = 'http://mail.tecnoweb.org.bo/inf513/grupo12sc/Restaurant/public/';
 
         $search = strtolower($r->buscar);
@@ -144,7 +144,7 @@ class ReporteController extends Controller
         $data = [];
         foreach ($tablas as $tabla) {
             $resultados = DB::table($tabla[0])
-                ->select(DB::raw("'$rutaTecno$tabla[2]' as ruta, $tabla[1] as nombre, '$tabla[0]' as modelo"))
+                ->select(DB::raw("'$rutaTecnos$tabla[2]' as ruta, $tabla[1] as nombre, '$tabla[0]' as modelo"))
                 ->whereRaw("lower($tabla[1]) like ?", ["%$search%"])
                 ->get();
             $data = array_merge($data, $resultados->toArray());
