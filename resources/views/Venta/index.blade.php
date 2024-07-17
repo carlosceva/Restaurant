@@ -53,7 +53,7 @@
                     <tr>
                         <td>{{ $venta->id }}</td>
                         <td>{{ $venta->cliente->nombre }}</td> 
-                        <td>{{ $venta->empleado->nombre }}</td> 
+                        <td>{{ $venta->empleado->nombre ?? 'No asignado' }}</td> 
                         <td>{{ $venta->promocion->descuento ?? 0 }}</td> 
                         <td>{{ $venta->servicio->descripcion }}</td> 
                         <td>{{ $venta->fecha }}</td>

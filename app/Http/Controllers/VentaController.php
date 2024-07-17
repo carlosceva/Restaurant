@@ -75,7 +75,12 @@ class VentaController extends Controller
      */
     public function store(Request $request)
     {
-        $usuario = auth()->user()->id;
+        $usuario = auth()->user();
+        $cajero = auth()->user()->id;
+        $rol = $usuario->rol->nombre;
+
+        //$empleado = auth()->user()->empleado->id;
+        //dd($cajero);
 
         // Decodificar la cadena JSON de detalles
         $detalles = json_decode($request->detalles, true);
@@ -97,16 +102,43 @@ class VentaController extends Controller
         }
 
         // Crear la venta
-        $fechaActual = Carbon::now();
-        $venta = Venta::create([
-            'id_cliente' => $request->cliente_id,
-            'id_servicio' => $request->servicio_id,
-            'fecha' => $fechaActual,
-            'estado' => 'a',
-            'id_promocion' => $request->has('promocion_id') ? $request->promocion_id : null,
-            'id_empleado' => $usuario, // O puedes obtener el ID del empleado autenticado
-            'total' => 0, // Inicializamos el total en 0
-        ]);
+        if($usuario->rol->nombre === 'Cliente'){
+            $fechaActual = Carbon::now();
+            $venta = Venta::create([
+                'id_cliente' => $request->cliente_id,
+                'id_servicio' => $request->servicio_id,
+                'fecha' => $fechaActual,
+                'estado' => 'a',
+                'id_promocion' => $request->has('promocion_id') ? $request->promocion_id : null,
+                'id_empleado' => null,
+                'total' => 0, // Inicializamos el total en 0
+            ]);
+        }
+
+        if($usuario->rol->nombre === 'Cajero'){
+            $fechaActual = Carbon::now();
+            $venta = Venta::create([
+                'id_cliente' => $request->cliente_id,
+                'id_servicio' => $request->servicio_id,
+                'fecha' => $fechaActual,
+                'estado' => 'a',
+                'id_promocion' => $request->has('promocion_id') ? $request->promocion_id : null,
+                'id_empleado' => $cajero, // O puedes obtener el ID del empleado autenticado
+                'total' => 0, // Inicializamos el total en 0
+            ]);
+        }
+        if($usuario->rol->nombre === 'Administrador'){
+            $fechaActual = Carbon::now();
+            $venta = Venta::create([
+                'id_cliente' => $request->cliente_id,
+                'id_servicio' => $request->servicio_id,
+                'fecha' => $fechaActual,
+                'estado' => 'a',
+                'id_promocion' => $request->has('promocion_id') ? $request->promocion_id : null,
+                'id_empleado' => 1, // O puedes obtener el ID del empleado autenticado
+                'total' => 0, // Inicializamos el total en 0
+            ]);
+        }
 
         // Procesar los detalles de la venta
         $total = 0;
@@ -180,17 +212,21 @@ class VentaController extends Controller
     }
 
     public function detalles(Venta $venta)
-    {
-        $html = '<div class="container">';
+{
+    $html = '<div class="container">';
     $html .= '<h2>Venta #' . $venta->id . '</h2>';
     $html .= '<p>Cliente: ' . $venta->cliente->nombre . '</p>';
-    $html .= '<p>Empleado: ' . $venta->empleado->nombre . '</p>';
+    // Verificar si existe el empleado
+    if ($venta->empleado) {
+        $html .= '<p>Empleado: ' . $venta->empleado->nombre . '</p>';
+    }
     $html .= '<p>Fecha: ' . $venta->fecha . '</p>';
-
+    
     $html .= '<h3>Detalles de Venta:</h3>';
     $html .= '<table class="table">';
     $html .= '<thead><tr><th>Producto</th><th>P/U</th><th>Cant</th><th>Subtotal</th></tr></thead>';
     $html .= '<tbody>';
+
     $totalSinDescuento = 0;
     foreach ($venta->detalleVentas as $detalle) {
         $precioUnitario = $detalle->producto->precio;
@@ -216,9 +252,11 @@ class VentaController extends Controller
         $totalConDescuento = $totalSinDescuento;
     }
 
-    $html .= '<h2><p>Total: ' . number_format($totalConDescuento, 2) . '</p></h2></div>';
+    $html .= '<h2><p>Total: ' . number_format($totalConDescuento, 2) . '</p></h2>';
+    $html .= '</div>';
 
     return $html;
-    }
+}
+
 
 }
