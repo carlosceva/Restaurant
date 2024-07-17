@@ -36,6 +36,7 @@
             <thead class="table-light">
                 <tr>
                     <th>ID</th>
+                    <th>DESCRIPCION</th>
                     <th>DESCUENTO</th>
                     <th>INICIO</th>
                     <th>FIN</th>
@@ -47,6 +48,7 @@
                 @foreach($promociones as $promocion)
                 <tr>
                     <td>{{ $promocion->id }}</td>
+                    <td>{{ $promocion->descripcion }}</td>
                     <td>{{ $promocion->descuento }}</td>
                     <td>{{ $promocion-> fecha_i}}</td>
                     <td>{{ $promocion-> fecha_f}}</td>

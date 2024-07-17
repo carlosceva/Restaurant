@@ -10,6 +10,10 @@
         <form action="{{ route('promocion.store') }}" method="POST">
           @csrf
             <div class="mb-3">
+                <label for="descripcion" class="form-label">Descripcion</label>
+                <input type="text" class="form-control" id="descripcion" name="descripcion" required>
+            </div>
+            <div class="mb-3">
                 <label for="descuento" class="form-label">Descuento</label>
                 <input type="number" class="form-control" id="descuento" name="descuento" required>
             </div>

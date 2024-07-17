@@ -39,14 +39,15 @@ class PromocionController extends Controller
      */
     public function store(Request $request)
     {
-        /*$request->validate([
-            'nombre' => 'required|string|max:255'
-        ]);*/
+        $request->validate([
+            'descuento' => 'required|numeric|between:0,100'
+        ]);
         
         try {
             
             $promocion = Promocion::create([
                 'descuento' => $request->input('descuento'),
+                'descripcion' => $request->input('descripcion'),
                 'fecha_i' => $request->input('fecha_i'),
                 'fecha_f' => $request->input('fecha_f'),
                 'estado' => 'a',

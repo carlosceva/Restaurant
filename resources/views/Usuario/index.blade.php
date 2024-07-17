@@ -10,9 +10,7 @@
     GESTIONAR USUARIO    
     </h3>
     <div class="float-right d-sm-block"> 
-        <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-            <a href="#" data-toggle="modal" data-target="#addUserModal" class="btn btn-success"><i class="fa fa-plus"></i>&nbsp; Agregar</a>
-        </div> 
+        
     </div>
 </div><!-- /.card-header -->
 
@@ -43,7 +41,7 @@
                         <th>Rol</th>
                         <th>Empresa</th>
                         <th>Estado</th>
-                        <th>Acciones</th>
+                        
                     </tr>
                 </thead>
                 <tbody class="table-group-divider">
@@ -54,11 +52,7 @@
                         <td>{{ $usuario->rol }}</td>
                         <td>{{ $usuario->empresa }}</td>
                         <td>{{ $usuario->estado == 'a' ? 'Activo' : 'Inactivo' }} </td>
-                        <td>
-                            <a href="#" data-toggle="modal" data-target="#editModal{{ $usuario->user }}"><i class="fa fa-edit" aria-hidden="true"></i></a>
-                            &nbsp;
-                            <a href="#" data-toggle="modal" data-target="#deleteModal{{ $usuario->user }}"> <i class="fa fa-trash" aria-hidden="true"></i></a>
-                        </td>
+                        
                     </tr>
                     @include('Usuario.modificar', ['usuario' => $usuario])
                     @include('Usuario.eliminar', ['usuario' => $usuario]) 

@@ -12,5 +12,5 @@ class Promocion extends Model
     protected $primaryKey = 'id';
     public $timestamps = true;
     
-    protected $fillable = ['descuento','fecha_i','fecha_f','estado'];
+    protected $fillable = ['descuento','fecha_i','fecha_f','estado','descripcion'];
 }

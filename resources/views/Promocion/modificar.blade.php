@@ -11,7 +11,11 @@
                 @csrf
                 @method('PUT')
                 <div class="mb-3">
-                    <label for="descuento" class="form-label">Nombre</label>
+                    <label for="descripcion" class="form-label">Descripcion</label>
+                    <input type="text" class="form-control" id="descripcion" name="descripcion" value="{{ $promocion->descripcion }}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="descuento" class="form-label">Descuento</label>
                     <input type="number" class="form-control" id="descuento" name="descuento" value="{{ $promocion->descuento }}" required>
                 </div>
                 <div class="mb-3">
@@ -23,12 +27,11 @@
                     <input type="date" class="form-control" id="fecha_f" name="fecha_f" value="{{ $promocion->fecha_f }}" required>
                 </div>
                 
-                <div class="mb-3">
-                    <label for="estado" class="form-label">Estado</label>
-                    <select class="form-control" id="estado" name="estado" required>
-                    <option value="">Seleccionar Estado</option>
-                        <option value="a">Activo</option>
-                        <option value="i">Inactivo</option>
+                <div class="form-group">
+                    <label for="estado">Estado</label>
+                    <select class="form-control" id="estado" name="estado">
+                        <option value="a" {{ $promocion->estado == 'a' ? 'selected' : '' }}>Activo</option>
+                        <option value="i" {{ $promocion->estado == 'i' ? 'selected' : '' }}>Inactivo</option>
                     </select>
                 </div>
                 

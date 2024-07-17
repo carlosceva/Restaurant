@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('promocions', function (Blueprint $table) {
             $table->id();
             $table->integer('descuento');
+            $table->string('descripcion')->nullable();
             $table->string('fecha_i');
             $table->string('fecha_f');
             $table->string('estado')->default('a');
