@@ -25,29 +25,51 @@ class PagoController extends Controller
 
         $rol = $usuario->rol->nombre;
         
-        if($usuario->rol->nombre === 'Cliente'){
+        if ($usuario->rol->nombre === 'Cliente') {
             $idCliente = $usuario->cliente->id; 
             $pagos = DB::table('pagos as p')
-                ->join('clientes as c', 'c.id','p.id_cliente')
-                ->where('p.estado','a')
-                ->where('id_cliente', $idCliente)
-                ->select('p.id as id', 'p.metodo_pago as metodopago', 'c.nombre as cliente','p.id_cliente as id_cliente','p.estado as estado', 'p.id_venta as id_venta')
-                ->orderBy('p.id','asc')
+                ->join('clientes as c', 'c.id', '=', 'p.id_cliente')
+                ->join('ventas as v', 'v.id', '=', 'p.id_venta') // Join with ventas table
+                ->where('p.estado', 'a')
+                ->where('p.id_cliente', $idCliente)
+                ->select(
+                    'p.id as id', 
+                    'p.metodo_pago as metodopago', 
+                    'c.nombre as cliente', 
+                    'v.total as total_venta', // Total from ventas table
+                    'v.fecha as fecha_venta', // Date from ventas table
+                    'p.estado as estado', 
+                    'p.id_venta as id_venta',
+                    'p.id_cliente as id_cliente'
+                )
+                ->orderBy('p.id', 'asc')
                 ->get();
         }
-
-        if($usuario->rol->nombre == 'Administrador' || $usuario->rol->nombre == 'Cajero' ){
+        
+        if ($usuario->rol->nombre == 'Administrador' || $usuario->rol->nombre == 'Cajero') {
             $pagos = DB::table('pagos as p')
-            ->join('clientes as c', 'c.id','p.id_cliente')
-            ->where('p.estado','a')
-            ->select('p.id as id', 'p.metodo_pago as metodopago', 'c.nombre as cliente','p.id_cliente as id_cliente','p.estado as estado', 'p.id_venta as id_venta')
-            ->orderBy('p.id','asc')
-            ->get();
+                ->join('clientes as c', 'c.id', '=', 'p.id_cliente')
+                ->join('ventas as v', 'v.id', '=', 'p.id_venta') // Join with ventas table
+                ->where('p.estado', 'a')
+                ->select(
+                    'p.id as id', 
+                    'p.metodo_pago as metodopago', 
+                    'c.nombre as cliente', 
+                    'v.total as total_venta', // Total from ventas table
+                    'v.fecha as fecha_venta', // Date from ventas table
+                    'p.estado as estado', 
+                    'p.id_venta as id_venta',
+                    'p.id_cliente as id_cliente'
+                )
+                ->orderBy('p.id', 'asc')
+                ->get();
         }
-        $clientes = Cliente::where('estado','a')->get();
-        $ventas =Venta::where('estado','a')->get();
-
-        return view('Pago.index', compact('pagos','num','clientes','ventas'));
+        
+        $clientes = Cliente::where('estado', 'a')->get();
+        $ventas = Venta::where('estado', 'a')->get();
+        
+        return view('Pago.index', compact('pagos', 'num', 'clientes', 'ventas','usuario'));
+        
     }
 
     /**

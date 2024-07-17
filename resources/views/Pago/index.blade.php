@@ -37,12 +37,12 @@
         <table class="table table-hover" id="pagos">
             <thead class="table-light">
                 <tr>
-                    <th>ID</th>
                     <th>CLIENTE</th>
-                    <th># VENTA</th>
+                    <th>TOTAL</th>
                     <th>METODO PAGO</th>
-                    <th>ESTADO</th>
+                    <th>FECHA</th>
                     @if(array_filter(auth()->user()->rol->privilegios->toArray(), function($v, $k) {return in_array($v['funcionalidad'], ['Pago']) && $v['estado'] === 'a' && ($v['modificar'] || $v['borrar']);}, ARRAY_FILTER_USE_BOTH))
+                        <th>ESTADO</th>
                         <th>ACCIONES</th>
                     @endif
                 </tr>
@@ -50,12 +50,12 @@
             <tbody class="table-group-divider">
                 @foreach($pagos as $pago)
                 <tr>
-                    <td>{{ $pago->id }}</td>
                     <td>{{ $pago->cliente }}</td>
-                    <td>{{ $pago->id_venta }}</td>
+                    <td>{{ $pago->total_venta }}</td>
                     <td>{{ $pago->metodopago }}</td>
-                    <td>{{ $pago->estado == 'a' ? 'Activo' : 'Inactivo' }} </td>
+                    <td>{{$pago->fecha_venta}}</td>
                     @if(array_filter(auth()->user()->rol->privilegios->toArray(), function($v, $k) {return in_array($v['funcionalidad'], ['Pago'])&& $v['estado'] === 'a' && ($v['modificar'] || $v['borrar']);}, ARRAY_FILTER_USE_BOTH))
+                    <td>{{ $pago->estado == 'a' ? 'Activo' : 'Inactivo' }} </td>
                     <td>
                         @if(array_filter(auth()->user()->rol->privilegios->toArray(), function($v, $k) {return in_array($v['funcionalidad'], ['Pago'])&& $v['estado'] === 'a' && $v['modificar'];}, ARRAY_FILTER_USE_BOTH))
                             <a href="#" data-toggle="modal" data-target="#editModal{{ $pago->id }}"><i class="fa fa-edit" aria-hidden="true"></i></a>
