@@ -132,7 +132,7 @@
     </section>
     <!-- /.content -->
 
-    <script src="{{ asset('js/chart.js') }}"></script>
+    
     <script>
     document.addEventListener('DOMContentLoaded', function () {
       var ctx = document.getElementById('graficoTorta').getContext('2d');

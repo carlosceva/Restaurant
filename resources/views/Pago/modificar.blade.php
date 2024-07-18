@@ -10,17 +10,19 @@
                 <form id="editarForm" action="{{ route('pago.update', $pago->id) }}" method="POST">
                 @csrf
                 @method('PUT')
-                <div class="form-group">
-                    <label for="id_cliente">Cliente</label>
-                    <select class="form-control" id="id_cliente" name="id_cliente" required>
-                    <option value="">Seleccionar cliente</option>
-                        @foreach($clientes as $cliente)
-                            <option value="{{ $cliente->id }}" {{ $pago->id_cliente == $cliente->id ? 'selected' : '' }}>
-                                {{ $cliente->nombre }}
-                            </option>
-                        @endforeach
-                    </select>
-                </div>
+                @if($usuario->rol->nombre === 'Cajero' || $usuario->rol->nombre === 'Administrador')
+                    <div class="form-group">
+                        <label for="id_cliente">Cliente</label>
+                        <select class="form-control" id="id_cliente" name="id_cliente" required>
+                        <option value="">Seleccionar cliente</option>
+                            @foreach($clientes as $cliente)
+                                <option value="{{ $cliente->id }}" {{ $pago->id_cliente == $cliente->id ? 'selected' : '' }}>
+                                    {{ $cliente->nombre }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                @endif
                 <div class="form-group">
                     <label for="id_venta"># Venta</label>
                     <select class="form-control" id="id_venta" name="id_venta" required>

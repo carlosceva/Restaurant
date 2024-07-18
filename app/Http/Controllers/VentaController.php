@@ -140,6 +140,11 @@ class VentaController extends Controller
             ]);
         }
 
+        // Validar que haya detalles
+        if (empty($detalles)) {
+            return redirect()->back()->withErrors(['detalles' => 'Se requiere agregar detalles para completar la venta.']);
+        }
+
         // Procesar los detalles de la venta
         $total = 0;
         foreach ($detalles as $detalle) {

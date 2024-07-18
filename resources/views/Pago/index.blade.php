@@ -37,6 +37,7 @@
         <table class="table table-hover" id="pagos">
             <thead class="table-light">
                 <tr>
+                    <th>ID</th>
                     <th>CLIENTE</th>
                     <th>TOTAL</th>
                     <th>METODO PAGO</th>
@@ -50,6 +51,7 @@
             <tbody class="table-group-divider">
                 @foreach($pagos as $pago)
                 <tr>
+                    <td>{{ $pago->id }}</td>
                     <td>{{ $pago->cliente }}</td>
                     <td>{{ $pago->total_venta }}</td>
                     <td>{{ $pago->metodopago }}</td>
@@ -76,3 +78,4 @@
 </div>
 @include('Pago.agregar')  
 @endsection
+

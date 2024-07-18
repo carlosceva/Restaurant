@@ -417,7 +417,7 @@
     </script>
     <script>
         function cambiarFondo(){
-          console.log("jaja sapee")
+          
             document.body.className='fondo'+{{auth()->user()->estilo}};
             
             if( {{auth()->user()->estilo}} ==1){

@@ -141,5 +141,6 @@ Route::get('/estadisticas', [ReporteController::class, 'estadisticas'])->name('e
 //vista para intrusos
 Route::get('/unauthorized', [EmpresaController::class, 'intruso'])->name('intruso');
 Route::get('/cargar-estilo/{estilo}', [ReporteController::class, 'cargarEstilo'])->name('cargarEstilo');
+Route::post('/confirmar-pago', [PagoController::class, 'confirmarPago'])->name('pago.confirmar');
 
 require __DIR__.'/auth.php';
